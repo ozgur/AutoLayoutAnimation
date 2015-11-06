@@ -23,7 +23,7 @@ class UserDataManager {
   }
   
   func requestUsers(plist: String, completion: (UserDataHTTPResponse) -> Void) {
-    execute(delay: 2.0, repeating: false) {
+    execute(delay: 1.0, repeating: false) {
       if let users = self.dataSource.loadUsersFromPlist(named: plist) {
         completion(.Success(users))
       }
