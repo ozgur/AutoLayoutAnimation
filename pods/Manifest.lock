@@ -1,0 +1,29 @@
+PODS:
+  - Alamofire (3.0.1)
+  - AlamofireObjectMapper (1.1.0):
+    - Alamofire (~> 3.0.0)
+    - ObjectMapper (~> 0.19)
+  - Cartography (0.5.0)
+  - Nimble (3.0.0)
+  - ObjectMapper (0.19)
+  - Ono (1.2.2)
+  - Quick (0.8.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.0)
+  - AlamofireObjectMapper (~> 1.0)
+  - Cartography (~> 0.5.0)
+  - Nimble (= 3.0.0)
+  - Ono
+  - Quick (~> 0.8.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 2457e1b2e6c46bb05c3a598c542b7bfd08893775
+  AlamofireObjectMapper: e31eb96b6adf855bb1b7737ff47598c5f42eb61e
+  Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
+  Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
+  ObjectMapper: a88114e5df20f055da63029f25cbc01014847c91
+  Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
+  Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
+
+COCOAPODS: 0.39.0

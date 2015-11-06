@@ -1,0 +1,1 @@
+../../../Quick/quick/NSString+QCKSelectorName.h

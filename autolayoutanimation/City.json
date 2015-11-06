@@ -1,0 +1,17 @@
+{
+  "name": "San Francisco",
+  "state": "California",
+  "population": 852469,
+  "zipcodes": "94102, 94404",
+  "image": "sanfrancisco.jpg",
+  "government": {
+    "type": "Mayor-council",
+    "mayor": "Edwin M. Lee",
+    "supervisors": ["Eric Mar", "Mark Farrell", "Katy Tang", "Norman Yee", "Scott Wiener"],
+  },
+  "area": {
+    "water": 479.2,
+    "land": 121.4,
+    "elevation": 16
+  }
+}

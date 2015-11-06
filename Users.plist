@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>firstname</key>
+		<string>Ozgur</string>
+		<key>lastname</key>
+		<string>Vatansever</string>
+		<key>id</key>
+		<string>4300933</string>
+		<key>city</key>
+		<string>Istanbul</string>
+	</dict>
+	<dict>
+		<key>firstname</key>
+		<string>Jackie</string>
+		<key>lastname</key>
+		<string>Qi</string>
+		<key>id</key>
+		<string>3423431</string>
+		<key>city</key>
+		<string>Beijing</string>
+	</dict>
+	<dict>
+		<key>firstname</key>
+		<string>Marcelo</string>
+		<key>lastname</key>
+		<string>Queiroz</string>
+		<key>id</key>
+		<string>3423886</string>
+		<key>city</key>
+		<string>Recife</string>
+	</dict>
+	<dict>
+		<key>firstname</key>
+		<string>Jefferey</string>
+		<key>lastname</key>
+		<string>Petersen</string>
+		<key>id</key>
+		<string>8264631</string>
+		<key>city</key>
+		<string>San Francisco</string>
+	</dict>
+	<dict>
+		<key>firstname</key>
+		<string>Brad</string>
+		<key>lastname</key>
+		<string>Peralta</string>
+		<key>id</key>
+		<string>9101941</string>
+		<key>city</key>
+		<string>Ohau</string>
+	</dict>
+	<dict>
+		<key>firstname</key>
+		<string>John</string>
+		<key>lastname</key>
+		<string>Doe</string>
+		<key>id</key>
+		<string>3345732</string>
+		<key>city</key>
+		<string>New York</string>
+	</dict>
+	<dict>
+		<key>firstname</key>
+		<string>Jane</string>
+		<key>lastname</key>
+		<string>Doe</string>
+		<key>id</key>
+		<string>4892342</string>
+		<key>city</key>
+		<string>Los Angeles</string>
+	</dict>
+	<dict>
+		<key>firstname</key>
+		<string>Fidel</string>
+		<key>lastname</key>
+		<string>Ramos</string>
+		<key>id</key>
+		<string>4563433</string>
+		<key>city</key>
+		<string>Madrid</string>
+	</dict>
+</array>
+</plist>
