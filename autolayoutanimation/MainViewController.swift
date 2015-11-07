@@ -11,7 +11,7 @@ import Cartography
 
 class MainViewController: UITableViewController {
   
-  let v: CGFloat = 5
+  var v: CGFloat
   
   let refreshView: UIView = {
     let view = UIView(frame: CGRectZero)
@@ -57,7 +57,7 @@ class MainViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+        
     tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "CellIdentifier")
     tableView.tableFooterView = UIView(frame: CGRectZero)
     tableView.addSubview(refreshView)
