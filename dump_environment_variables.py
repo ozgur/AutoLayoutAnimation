@@ -27,6 +27,9 @@ def main():
         target = get_environment_variable_if_possible("IPHONEOS_DEPLOYMENT_TARGET", "")
         config.set("Xcode", "DeploymentTarget", target)
 
+        version = get_environment_variable_if_possible("XCODE_VERSION_ACTUAL", "")
+        config.set("Xcode", "Version", version)
+
         config.write(f)
 
 
