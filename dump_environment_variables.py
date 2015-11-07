@@ -14,4 +14,3 @@ if __name__ == '__main__':
         config.set('Xcode', 'ProductName', os.environ.get('FULL_PRODUCT_NAME', ''))
         config.set('Xcode', 'Configuration', os.environ.get('CONFIGURATION', ''))
         config.write(f)
-        os.environ['ENV_VARIABLES_PATH'] = path
