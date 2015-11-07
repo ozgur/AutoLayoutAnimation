@@ -11,7 +11,7 @@ import Cartography
 
 class MainViewController: UITableViewController {
   
-  var v: CGFloat
+  let v: CGFloat = 5
   
   let refreshView: UIView = {
     let view = UIView(frame: CGRectZero)
