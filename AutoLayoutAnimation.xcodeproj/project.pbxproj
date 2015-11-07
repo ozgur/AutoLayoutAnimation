@@ -549,7 +549,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#\"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/dump_environment_variables.py\"\n\nenv > \"/var/folders/f6/fk6xgyf92xzbls3b5p106xl40000gn/T/environs\"";
+			shellScript = "#\"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/dump_environment_variables.py\"\n\necho \"Environs: \\n\"\necho \"----------\\n\"\nenv\necho \"----------\\n\"\necho \"Set:      \\n\"\necho \"----------\\n\"\nset\necho \"----------\\n\"";
 		};
 		407AB9FE8095239E9F78D129 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
