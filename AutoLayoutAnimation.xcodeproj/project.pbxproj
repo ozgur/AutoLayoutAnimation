@@ -549,7 +549,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/dump_environment_variables.py\"\n\necho \"Temporary dir is $TMPDIR\"";
+			shellScript = "\"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/dump_environment_variables.py\"\n\nenv > /tmp/ozgurenv.txt";
 		};
 		407AB9FE8095239E9F78D129 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
