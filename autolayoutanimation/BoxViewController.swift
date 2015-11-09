@@ -11,14 +11,16 @@ import Cartography
 
 class BoxViewController: UIViewController {
 
-  @IBOutlet private weak var topView: UIView!
-  @IBOutlet private weak var bottomView: UIView!
+  @IBOutlet weak var topView: UIView!
+  @IBOutlet weak var bottomView: UIView!
 
   private var constraints = ConstraintGroup()
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    edgesForExtendedLayout = .None
+    
     topView.translatesAutoresizingMaskIntoConstraints = false
     bottomView.translatesAutoresizingMaskIntoConstraints = false
 

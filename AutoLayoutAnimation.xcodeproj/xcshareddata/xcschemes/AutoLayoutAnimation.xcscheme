@@ -38,6 +38,16 @@
                ReferencedContainer = "container:AutoLayoutAnimation.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2E2A14761BF058FB00172CA1"
+               BuildableName = "AutoLayoutAnimationUITests.xctest"
+               BlueprintName = "AutoLayoutAnimationUITests"
+               ReferencedContainer = "container:AutoLayoutAnimation.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

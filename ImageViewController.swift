@@ -11,11 +11,12 @@ import Cartography
 
 class ImageViewController: UIViewController {
   
-  private var firstImageView: UIImageView!
-  private var secondImageView: UIImageView!
-  private var thirdImageView: UIImageView!
-  private var scrollView: UIScrollView!
-  
+  var firstImageView: UIImageView!
+  var secondImageView: UIImageView!
+  var thirdImageView: UIImageView!
+  var scrollView: UIScrollView!
+  var textField: UITextField!
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -79,12 +80,12 @@ class ImageViewController: UIViewController {
       thirdImageView.height == 150.0
     }
     
-    let textField = UITextField(frame: CGRectZero)
+    textField = UITextField(frame: CGRectZero)
     textField.borderStyle = .RoundedRect
-    
-    scrollView.addSubview(textField)
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.text = "aaaa"
+    
+    scrollView.addSubview(textField)
     
     constrain(textField, v2: thirdImageView, v3: scrollView) { textField, thirdImageView, scrollView in
       textField.top == thirdImageView.bottom + 9.0

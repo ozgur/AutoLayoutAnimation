@@ -117,7 +117,7 @@ class MainViewController: UITableViewController {
     case 1:
       switch indexPath.row {
       case 0:
-        self.performSegueWithIdentifier("showBoxAnimation", sender: self)
+        navigationController?.pushViewController(BoxViewController(nibName: "BoxViewController", bundle: nil), animated: true)
       case 1:
         navigationController?.pushViewController(TransformViewController(), animated: true)
       case 2:

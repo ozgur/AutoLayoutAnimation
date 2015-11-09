@@ -10,4 +10,8 @@
 
 @interface UIViewController (Accessibility)
 
+@property (nonatomic, assign) BOOL assignedAllAccessibilityIdentifiersForInstanceVariables;
+
+- (NSString *)designatedAccessibilityIdentifierForInstanceVariable:(NSString *)ivarName;
+
 @end
