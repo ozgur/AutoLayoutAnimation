@@ -6,88 +6,136 @@
 //  Copyright © 2015 Underplot ltd. All rights reserved.
 //
 
+
 import UIKit
-import Cartography
-
-class ScrollingView: UIView {
-
-  override class func layerClass() -> AnyClass {
-    return CAScrollLayer.self
-  }
-}
 
 class CAScrollViewController: UIViewController {
   
   private static let trainImage: UIImage! = UIImage(named: "train-invasivecode")
-
-  let trainView: ScrollingView = {
-    let view = ScrollingView(frame: CGRectZero)
-
-    let image = CAScrollViewController.trainImage
+  private static let skyImage: UIImage! = UIImage(named: "sky-invasivecode")
+  
+  lazy var view2: UIView = { [unowned self] in
+    let view2 = UIView(frame: CGRectZero)
+    view2.backgroundColor = .whiteColor()
     
+    let label = UILabel()
+    label.text = self.name
+    
+    return view2
+  }()
+  
+  var name: String {
+    return "ozgur"
+  }
+  
+  lazy var scrollLayer: CAScrollLayer = { [unowned self] in
+    let layer = CAScrollLayer()
+    
+    layer.bounds = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.size.width, height:self.view.bounds.size.height) // 9
+    layer.position = CGPoint(x: self.view.bounds.size.width/2, y: self.view.bounds.size.height/2) // 10
+
+    layer.borderColor = UIColor.blackColor().CGColor
+    layer.borderWidth = 5.0
+    layer.scrollMode = kCAScrollHorizontally
+
+    return layer
+  }()
+  
+ lazy var scrollLayerTop: CAScrollLayer = { [unowned self] in
+    let scrollLayerTop = CAScrollLayer() // 22
+    scrollLayerTop.bounds = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.size.width, height: self.view.bounds.size.height) // 23
+    scrollLayerTop.position = CGPoint(x: self.view.bounds.size.width/2, y: self.view.bounds.size.height/2) // 24
+    scrollLayerTop.scrollMode = kCAScrollVertically // 25
+    return scrollLayerTop
+  }()
+  
+  let trainLayer: CALayer = {
     let layer = CALayer()
+    let image: UIImage! = UIImage(named: "train-invasivecode")
+
     layer.bounds = CGRect(origin: CGPointZero, size: image.size)
     layer.contents = image.CGImage
     layer.position = CGPoint(x: image.size.width / 2.0, y: image.size.height / 2.0)
     
-    view.layer.addSublayer(layer)
-    view.layer.borderWidth = 0.5
-    view.layer.borderColor = UIColor.blackColor().CGColor
-    return view
+    return layer
   }()
   
-  var trainViewLayer: CAScrollLayer {
-    return trainView.layer as! CAScrollLayer
-  }
+  let skyLayer: CALayer = {
+    let layer = CALayer()
+    let image: UIImage! = UIImage(named: "sky-invasivecode")
+    
+    layer.bounds = CGRect(origin: CGPointZero, size: image.size)
+    layer.contents = image.CGImage
+    layer.position = CGPoint(x: image.size.width / 2.0, y: image.size.height / 2.0)
+    
+    return layer
+  }()
   
-  var trainAnimator: CADisplayLink!
-  var translation: CGFloat = 0.0
-  
+  var animator: CADisplayLink!
+  var skyTranslation: CGFloat = 0.0
+  var trainTranslation: CGFloat = 0.0
+  var moveUp : Bool = true
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
     title = "Train"
     
     edgesForExtendedLayout = .None
-
     view.backgroundColor = UIColor.whiteColor()
-    view.addSubview(trainView)
 
-    constrain(trainView, v2: view) { trainView, view in
-      let trainImage = CAScrollViewController.trainImage
+    scrollLayer.addSublayer(skyLayer)
+    view.layer.addSublayer(scrollLayer)
 
-      trainView.centerX == view.centerX
-      trainView.centerY == view.centerY - 150
-      trainView.width == trainImage.size.width / 2.0
-      trainView.height == trainImage.size.height
-    }
+    let image: UIImage! = UIImage(named: "train-invasivecode")
+    trainLayer.position = CGPoint(x: view.bounds.size.width/2, y: (view.bounds.size.height - image.size.height / 2))
+    scrollLayerTop.addSublayer(trainLayer)  // 21
+    view.layer.addSublayer(scrollLayerTop)  // 20
     
-    trainAnimator = CADisplayLink(target: self, selector: "trainViewLayerScroll")
-    trainAnimator.frameInterval = 10
+    animator = CADisplayLink(target: self, selector: "scrollLayerScroll")
+    animator.frameInterval = 10
   }
   
-  func trainViewLayerScroll() {
+  func scrollLayerScroll() {
+    scrollLayer.scrollPoint(CGPoint(x: skyTranslation, y: 0.0))
+    
+    if skyTranslation >= skyLayer.bounds.width {
+      scrollLayer.scrollPoint(CGPointZero)
+      skyTranslation = 0
+    }
+    skyTranslation = skyTranslation + 10
+    
+    if (moveUp != false) {
+      scrollLayerTop.scrollToPoint(CGPoint(x: 0.0, y: 10.0))
+      moveUp = false
+    } else {
+      scrollLayerTop.scrollToPoint(CGPoint(x: 0.0, y: -10.0))
+      moveUp = true
+    }
+    
+    /*
     let newPoint = CGPoint(x: translation, y: 0.0)
-    trainViewLayer.scrollPoint(newPoint)
-    if translation <= -trainViewLayer.bounds.width {
+    scrollLayer.scrollPoint(newPoint)
+    if translation <= -scrollLayer.bounds.width {
       translation = CAScrollViewController.trainImage.size.width
-      trainViewLayer.scrollPoint(CGPoint(x: translation, y: 0.0))
+      scrollLayer.scrollPoint(CGPoint(x: translation, y: 0.0))
     }
     translation -= 10
+    */
   }
   
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
-    trainAnimator.invalidate()
+    animator.invalidate()
   }
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
-    trainAnimator.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
+    animator.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
   }
   
   deinit {
-    trainAnimator.invalidate()
-    trainAnimator = nil
+    animator.invalidate()
+    animator = nil
   }
 }

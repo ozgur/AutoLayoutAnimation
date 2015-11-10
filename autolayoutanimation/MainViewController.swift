@@ -120,7 +120,7 @@ class MainViewController: UITableViewController {
     case 1:
       switch indexPath.row {
       case 0:
-        navigationController?.pushViewController(CAScrollViewController(), animated: true)
+        self.presentViewController(CAScrollViewController(), animated: true, completion: nil)
       default:
         break
       }
