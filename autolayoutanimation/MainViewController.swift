@@ -28,10 +28,13 @@ class MainViewController: UITableViewController {
     return view
   }()
   
-  var titles = ["Extensions", "Animation", "Alamofire", "Mapper", "UI Testing"]
+  var titles = ["Extensions", "Layers", "Animation", "Alamofire", "Mapper", "UI Testing"]
   var copies = [
     [
       "Image Scaling"
+    ],
+    [
+      "Scrollable Layers"
     ],
     [
       "Animating Height",
@@ -51,7 +54,7 @@ class MainViewController: UITableViewController {
       "Nested Objects"
     ],
     [
-      "Users",
+      "Users"
     ]
   ]
   
@@ -117,6 +120,13 @@ class MainViewController: UITableViewController {
     case 1:
       switch indexPath.row {
       case 0:
+        navigationController?.pushViewController(CAScrollViewController(), animated: true)
+      default:
+        break
+      }
+    case 2:
+      switch indexPath.row {
+      case 0:
         navigationController?.pushViewController(BoxViewController(nibName: "BoxViewController", bundle: nil), animated: true)
       case 1:
         navigationController?.pushViewController(TransformViewController(), animated: true)
@@ -125,7 +135,7 @@ class MainViewController: UITableViewController {
       default:
         break
       }
-    case 2:
+    case 3:
       switch indexPath.row {
       case 0:
         navigationController?.pushViewController(AlamofireViewController(), animated: true)
@@ -142,7 +152,7 @@ class MainViewController: UITableViewController {
       default:
         break
       }
-    case 3:
+    case 34:
       switch indexPath.row {
       case 0:
         navigationController?.pushViewController(BasicObjectMapperViewController(), animated: true)
@@ -151,7 +161,7 @@ class MainViewController: UITableViewController {
       default:
         break
       }
-    case 4:
+    case 5:
       switch indexPath.row {
       case 0:
         navigationController?.pushViewController(UserListViewController(), animated: true)

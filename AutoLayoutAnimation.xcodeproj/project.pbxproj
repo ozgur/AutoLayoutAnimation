@@ -22,8 +22,8 @@
 		2E1F3F721BE7366B0045F3EF /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1F3F711BE7366B0045F3EF /* ImageViewController.swift */; };
 		2E1F3F791BE827AD0045F3EF /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1F3F781BE827AD0045F3EF /* String+Additions.swift */; };
 		2E2A14861BF11D8B00172CA1 /* AccessibilityIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2A14851BF11D8B00172CA1 /* AccessibilityIdentifierTests.swift */; };
-		2E2A14891BF127A200172CA1 /* SwizzlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2A14881BF127A200172CA1 /* SwizzlerTests.swift */; };
 		2E2A148D1BF12B7000172CA1 /* BoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E2A148C1BF12B7000172CA1 /* BoxViewController.xib */; };
+		2E2A14FC1BF1760500172CA1 /* CAScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2A14FB1BF1760500172CA1 /* CAScrollViewController.swift */; };
 		2E2D65771BE8980800859797 /* UIViewController+Accessibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D65761BE8980800859797 /* UIViewController+Accessibility.m */; };
 		2E2D657B1BEAD3E700859797 /* NSObject+Swizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D657A1BEAD3E700859797 /* NSObject+Swizzler.m */; };
 		2E2D65801BEAD57700859797 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D657F1BEAD57700859797 /* UIImage+Additions.m */; };
@@ -89,8 +89,8 @@
 		2E1F3F711BE7366B0045F3EF /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		2E1F3F781BE827AD0045F3EF /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		2E2A14851BF11D8B00172CA1 /* AccessibilityIdentifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifierTests.swift; sourceTree = "<group>"; };
-		2E2A14881BF127A200172CA1 /* SwizzlerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwizzlerTests.swift; sourceTree = "<group>"; };
 		2E2A148C1BF12B7000172CA1 /* BoxViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoxViewController.xib; sourceTree = "<group>"; };
+		2E2A14FB1BF1760500172CA1 /* CAScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAScrollViewController.swift; sourceTree = "<group>"; };
 		2E2D65711BE892B600859797 /* AutoLayoutAnimation-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AutoLayoutAnimation-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		2E2D65751BE8980800859797 /* UIViewController+Accessibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Accessibility.h"; sourceTree = "<group>"; };
 		2E2D65761BE8980800859797 /* UIViewController+Accessibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Accessibility.m"; sourceTree = "<group>"; };
@@ -203,6 +203,7 @@
 		2E126C6E1BCF03DD00A99F3C /* AutoLayoutAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				2E2A14FA1BF175FC00172CA1 /* Layers */,
 				2E188A161BEB08B500FF3CB9 /* 3rd Party */,
 				2E1F3F6A1BE723990045F3EF /* Extensions */,
 				2E126C6F1BCF03DD00A99F3C /* AppDelegate.swift */,
@@ -250,12 +251,12 @@
 			name = Accessibility;
 			sourceTree = "<group>";
 		};
-		2E2A14871BF1278200172CA1 /* Swizzling */ = {
+		2E2A14FA1BF175FC00172CA1 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				2E2A14881BF127A200172CA1 /* SwizzlerTests.swift */,
+				2E2A14FB1BF1760500172CA1 /* CAScrollViewController.swift */,
 			);
-			name = Swizzling;
+			name = Layers;
 			sourceTree = "<group>";
 		};
 		2E2D65781BE91E6700859797 /* Image Scaling */ = {
@@ -363,7 +364,6 @@
 		2E9732311BDDDB97007FA27C /* AutoLayoutAnimationTests */ = {
 			isa = PBXGroup;
 			children = (
-				2E2A14871BF1278200172CA1 /* Swizzling */,
 				2E2A14841BF11D7400172CA1 /* Accessibility */,
 				2E97323D1BDDE40B007FA27C /* User */,
 				2E9732341BDDDB97007FA27C /* Info.plist */,
@@ -638,6 +638,7 @@
 			files = (
 				2EBD6FF01BD55D0F007351D1 /* AlamofireViewController.swift in Sources */,
 				2EBD70081BD5B4D2007351D1 /* AlamofireXMLViewController.swift in Sources */,
+				2E2A14FC1BF1760500172CA1 /* CAScrollViewController.swift in Sources */,
 				2EAC24C41BE0164C006FB1C5 /* UserDataManager.swift in Sources */,
 				2E4ED14A1BDEB1C7005730BD /* UserCollectionViewLayout.swift in Sources */,
 				2E2D65771BE8980800859797 /* UIViewController+Accessibility.m in Sources */,
@@ -667,7 +668,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E2A14891BF127A200172CA1 /* SwizzlerTests.swift in Sources */,
 				2E97323C1BDDDBB9007FA27C /* UserTests.swift in Sources */,
 				2E2A14861BF11D8B00172CA1 /* AccessibilityIdentifierTests.swift in Sources */,
 			);
