@@ -34,8 +34,6 @@
 		2E4ED14A1BDEB1C7005730BD /* UserCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4ED1491BDEB1C7005730BD /* UserCollectionViewLayout.swift */; };
 		2E4ED14F1BDED1B7005730BD /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4ED14D1BDED1B7005730BD /* UserCollectionViewCell.swift */; };
 		2E4ED1501BDED1B7005730BD /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4ED14E1BDED1B7005730BD /* UserCollectionViewCell.xib */; };
-		2E8E48901BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E488E1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift */; };
-		2E8E48911BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E8E488F1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib */; };
 		2E96FA631BED996700BD8169 /* dump_xcs_variables.py in Resources */ = {isa = PBXBuildFile; fileRef = 2E96FA621BED996700BD8169 /* dump_xcs_variables.py */; };
 		2E9732291BDDCFD4007FA27C /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9732281BDDCFD4007FA27C /* UserDataSource.swift */; };
 		2E97322B1BDDD497007FA27C /* Users.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E97322A1BDDD497007FA27C /* Users.plist */; };
@@ -44,17 +42,7 @@
 		2EAC24C21BE00F0D006FB1C5 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EAC24C01BE00F0D006FB1C5 /* UserViewController.xib */; };
 		2EAC24C41BE0164C006FB1C5 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC24C31BE0164C006FB1C5 /* UserDataManager.swift */; };
 		2EB333B51BE2BB74001827B5 /* CoreAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB333B41BE2BB74001827B5 /* CoreAnimationViewController.swift */; };
-		2EBD6FF01BD55D0F007351D1 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD6FEF1BD55D0F007351D1 /* AlamofireViewController.swift */; };
-		2EBD6FF21BD566A2007351D1 /* AlamofireViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD6FF11BD566A2007351D1 /* AlamofireViewController.xib */; };
-		2EBD6FF51BD5805A007351D1 /* AlamofirePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD6FF31BD5805A007351D1 /* AlamofirePostViewController.swift */; };
-		2EBD6FF61BD5805A007351D1 /* AlamofirePostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD6FF41BD5805A007351D1 /* AlamofirePostViewController.xib */; };
 		2EBD6FFD1BD5861E007351D1 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD6FFC1BD5861E007351D1 /* image.jpg */; };
-		2EBD70001BD5941B007351D1 /* AlamofireDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD6FFE1BD5941B007351D1 /* AlamofireDownloadViewController.swift */; };
-		2EBD70011BD5941B007351D1 /* AlamofireDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD6FFF1BD5941B007351D1 /* AlamofireDownloadViewController.xib */; };
-		2EBD70041BD5A8FB007351D1 /* AlamofirePaginationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD70021BD5A8FB007351D1 /* AlamofirePaginationViewController.swift */; };
-		2EBD70051BD5A8FB007351D1 /* AlamofirePaginationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD70031BD5A8FB007351D1 /* AlamofirePaginationViewController.xib */; };
-		2EBD70081BD5B4D2007351D1 /* AlamofireXMLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD70061BD5B4D2007351D1 /* AlamofireXMLViewController.swift */; };
-		2EBD70091BD5B4D2007351D1 /* AlamofireXMLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD70071BD5B4D2007351D1 /* AlamofireXMLViewController.xib */; };
 		2EBE65651BD1859F004ABC5D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE65641BD1859F004ABC5D /* MainViewController.swift */; };
 		2EBE65671BD1891C004ABC5D /* TransformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE65661BD1891C004ABC5D /* TransformViewController.swift */; };
 		3F9F9287E3ECAA914B40E513 /* Pods_AutoLayoutAnimationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5AAE5144B7EF88523771BE7 /* Pods_AutoLayoutAnimationTests.framework */; };
@@ -105,8 +93,6 @@
 		2E4ED1491BDEB1C7005730BD /* UserCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2E4ED14D1BDED1B7005730BD /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		2E4ED14E1BDED1B7005730BD /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
-		2E8E488E1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireSerializeViewController.swift; sourceTree = "<group>"; };
-		2E8E488F1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofireSerializeViewController.xib; sourceTree = "<group>"; };
 		2E96FA621BED996700BD8169 /* dump_xcs_variables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = dump_xcs_variables.py; sourceTree = "<group>"; };
 		2E9732281BDDCFD4007FA27C /* UserDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
 		2E97322A1BDDD497007FA27C /* Users.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Users.plist; sourceTree = "<group>"; };
@@ -118,17 +104,7 @@
 		2EAC24C01BE00F0D006FB1C5 /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		2EAC24C31BE0164C006FB1C5 /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		2EB333B41BE2BB74001827B5 /* CoreAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreAnimationViewController.swift; path = autolayoutanimation/CoreAnimationViewController.swift; sourceTree = SOURCE_ROOT; };
-		2EBD6FEF1BD55D0F007351D1 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
-		2EBD6FF11BD566A2007351D1 /* AlamofireViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofireViewController.xib; sourceTree = "<group>"; };
-		2EBD6FF31BD5805A007351D1 /* AlamofirePostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofirePostViewController.swift; sourceTree = "<group>"; };
-		2EBD6FF41BD5805A007351D1 /* AlamofirePostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofirePostViewController.xib; sourceTree = "<group>"; };
 		2EBD6FFC1BD5861E007351D1 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
-		2EBD6FFE1BD5941B007351D1 /* AlamofireDownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireDownloadViewController.swift; sourceTree = "<group>"; };
-		2EBD6FFF1BD5941B007351D1 /* AlamofireDownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofireDownloadViewController.xib; sourceTree = "<group>"; };
-		2EBD70021BD5A8FB007351D1 /* AlamofirePaginationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofirePaginationViewController.swift; sourceTree = "<group>"; };
-		2EBD70031BD5A8FB007351D1 /* AlamofirePaginationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofirePaginationViewController.xib; sourceTree = "<group>"; };
-		2EBD70061BD5B4D2007351D1 /* AlamofireXMLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireXMLViewController.swift; sourceTree = "<group>"; };
-		2EBD70071BD5B4D2007351D1 /* AlamofireXMLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofireXMLViewController.xib; sourceTree = "<group>"; };
 		2EBE65641BD1859F004ABC5D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2EBE65661BD1891C004ABC5D /* TransformViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformViewController.swift; sourceTree = "<group>"; };
 		4999F4007730AD5E88EC7AB6 /* Pods-AutoLayoutAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutAnimation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutAnimation/Pods-AutoLayoutAnimation.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,7 +187,6 @@
 				2E126C731BCF03DD00A99F3C /* Main.storyboard */,
 				2E2D65781BE91E6700859797 /* Image Scaling */,
 				2E8E48931BD6BD52003A8CD3 /* Animation */,
-				2E8E48921BD6BD45003A8CD3 /* Alamofire */,
 				2E0C69681BD6FB1500365324 /* Mapper */,
 				2E9732251BDDCF3C007FA27C /* User */,
 				2E126C761BCF03DD00A99F3C /* Assets.xcassets */,
@@ -305,25 +280,6 @@
 				2E97322A1BDDD497007FA27C /* Users.plist */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		2E8E48921BD6BD45003A8CD3 /* Alamofire */ = {
-			isa = PBXGroup;
-			children = (
-				2EBD6FEF1BD55D0F007351D1 /* AlamofireViewController.swift */,
-				2EBD6FF11BD566A2007351D1 /* AlamofireViewController.xib */,
-				2EBD6FF31BD5805A007351D1 /* AlamofirePostViewController.swift */,
-				2EBD6FF41BD5805A007351D1 /* AlamofirePostViewController.xib */,
-				2EBD6FFE1BD5941B007351D1 /* AlamofireDownloadViewController.swift */,
-				2EBD6FFF1BD5941B007351D1 /* AlamofireDownloadViewController.xib */,
-				2EBD70021BD5A8FB007351D1 /* AlamofirePaginationViewController.swift */,
-				2EBD70031BD5A8FB007351D1 /* AlamofirePaginationViewController.xib */,
-				2EBD70061BD5B4D2007351D1 /* AlamofireXMLViewController.swift */,
-				2EBD70071BD5B4D2007351D1 /* AlamofireXMLViewController.xib */,
-				2E8E488E1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift */,
-				2E8E488F1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib */,
-			);
-			name = Alamofire;
 			sourceTree = "<group>";
 		};
 		2E8E48931BD6BD52003A8CD3 /* Animation */ = {
@@ -493,24 +449,18 @@
 				2EAC24C21BE00F0D006FB1C5 /* UserViewController.xib in Resources */,
 				2E126C7A1BCF03DD00A99F3C /* LaunchScreen.storyboard in Resources */,
 				2E0C696F1BD70DC100365324 /* NestedObjectMapperViewController.xib in Resources */,
-				2EBD6FF61BD5805A007351D1 /* AlamofirePostViewController.xib in Resources */,
 				2E126C771BCF03DD00A99F3C /* Assets.xcassets in Resources */,
 				2E97322B1BDDD497007FA27C /* Users.plist in Resources */,
-				2E8E48911BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib in Resources */,
-				2EBD70091BD5B4D2007351D1 /* AlamofireXMLViewController.xib in Resources */,
 				2E4ABD001BD828BC00D1506C /* plane@2x.png in Resources */,
 				2E0C696B1BD6FBA200365324 /* Person.json in Resources */,
 				2E126C751BCF03DD00A99F3C /* Main.storyboard in Resources */,
 				2E0C69671BD6EF8B00365324 /* BasicObjectMapperViewController.xib in Resources */,
-				2EBD6FF21BD566A2007351D1 /* AlamofireViewController.xib in Resources */,
 				2E2A148D1BF12B7000172CA1 /* BoxViewController.xib in Resources */,
 				2E4ED1481BDEA764005730BD /* UserListViewController.xib in Resources */,
 				2E3975D41BD8016C0084D5C4 /* sanfrancisco@3x.jpg in Resources */,
 				2E4ED1501BDED1B7005730BD /* UserCollectionViewCell.xib in Resources */,
-				2EBD70011BD5941B007351D1 /* AlamofireDownloadViewController.xib in Resources */,
 				2E0C69711BD70ED000365324 /* City.json in Resources */,
 				2E96FA631BED996700BD8169 /* dump_xcs_variables.py in Resources */,
-				2EBD70051BD5A8FB007351D1 /* AlamofirePaginationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,23 +585,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EBD6FF01BD55D0F007351D1 /* AlamofireViewController.swift in Sources */,
-				2EBD70081BD5B4D2007351D1 /* AlamofireXMLViewController.swift in Sources */,
 				2E2A14FC1BF1760500172CA1 /* CAScrollViewController.swift in Sources */,
 				2EAC24C41BE0164C006FB1C5 /* UserDataManager.swift in Sources */,
 				2E4ED14A1BDEB1C7005730BD /* UserCollectionViewLayout.swift in Sources */,
 				2E2D65771BE8980800859797 /* UIViewController+Accessibility.m in Sources */,
 				2E0C69661BD6EF8B00365324 /* BasicObjectMapperViewController.swift in Sources */,
-				2E8E48901BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift in Sources */,
 				2EAC24C11BE00F0D006FB1C5 /* UserViewController.swift in Sources */,
 				2EBE65651BD1859F004ABC5D /* MainViewController.swift in Sources */,
-				2EBD70001BD5941B007351D1 /* AlamofireDownloadViewController.swift in Sources */,
 				2E2D65801BEAD57700859797 /* UIImage+Additions.m in Sources */,
-				2EBD70041BD5A8FB007351D1 /* AlamofirePaginationViewController.swift in Sources */,
 				2E4ED1471BDEA764005730BD /* UserListViewController.swift in Sources */,
 				2E2D657B1BEAD3E700859797 /* NSObject+Swizzler.m in Sources */,
 				2E126C721BCF03DD00A99F3C /* BoxViewController.swift in Sources */,
-				2EBD6FF51BD5805A007351D1 /* AlamofirePostViewController.swift in Sources */,
 				2E1F3F791BE827AD0045F3EF /* String+Additions.swift in Sources */,
 				2E126C701BCF03DD00A99F3C /* AppDelegate.swift in Sources */,
 				2E9732291BDDCFD4007FA27C /* UserDataSource.swift in Sources */,

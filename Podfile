@@ -3,8 +3,6 @@ use_frameworks!
 
 target 'AutoLayoutAnimation' do
   pod 'Cartography', '~> 0.5.0'
-  pod 'Alamofire', '~> 3.0'
-  pod 'AlamofireObjectMapper', '~> 1.0'
   pod 'Ono'
 end
 

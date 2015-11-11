@@ -135,23 +135,6 @@ class MainViewController: UITableViewController {
       default:
         break
       }
-    case 3:
-      switch indexPath.row {
-      case 0:
-        navigationController?.pushViewController(AlamofireViewController(), animated: true)
-      case 1:
-        navigationController?.pushViewController(AlamofirePostViewController(), animated: true)
-      case 2:
-        navigationController?.pushViewController(AlamofireDownloadViewController(), animated: true)
-      case 3:
-        navigationController?.pushViewController(AlamofirePaginationViewController(), animated: true)
-      case 4:
-        navigationController?.pushViewController(AlamofireXMLViewController(), animated: true)
-      case 5:
-        navigationController?.pushViewController(AlamofireSerializeViewController(), animated: true)
-      default:
-        break
-      }
     case 34:
       switch indexPath.row {
       case 0:

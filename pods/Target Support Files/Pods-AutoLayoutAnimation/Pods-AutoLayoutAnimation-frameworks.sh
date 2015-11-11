@@ -84,16 +84,10 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-AutoLayoutAnimation/Alamofire.framework"
-  install_framework "Pods-AutoLayoutAnimation/AlamofireObjectMapper.framework"
   install_framework "Pods-AutoLayoutAnimation/Cartography.framework"
-  install_framework "Pods-AutoLayoutAnimation/ObjectMapper.framework"
   install_framework "Pods-AutoLayoutAnimation/Ono.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-AutoLayoutAnimation/Alamofire.framework"
-  install_framework "Pods-AutoLayoutAnimation/AlamofireObjectMapper.framework"
   install_framework "Pods-AutoLayoutAnimation/Cartography.framework"
-  install_framework "Pods-AutoLayoutAnimation/ObjectMapper.framework"
   install_framework "Pods-AutoLayoutAnimation/Ono.framework"
 fi
