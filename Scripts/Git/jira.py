@@ -34,6 +34,7 @@ class JiraRequest(object):
         else:
             request = urllib2.Request(self.url)
 
+
         for key, value in self.headers.items():
             request.add_header(key, value)
 
@@ -73,11 +74,13 @@ class TaskTransitionsRequest(JiraRequest):
             self.response = json.loads(self.response)
 
 
-class StartTaskRequest(JiraRequest):
-    def __init__(self, task_id, transition_id, username, password):
+class UpdateTaskRequest(JiraRequest):
+    def __init__(self, task_id, transition_id, username, password, comment=None):
         url = "/rest/api/2/issue/{}/transitions".format(task_id)
         params = {"transition": {"id": transition_id}}
-        super(StartTaskRequest, self).__init__(url, (username, password), params)
+        if comment:
+            params["update"] = {"comment": [{"add": {"body": comment}}]}
+        super(UpdateTaskRequest, self).__init__(url, (username, password), params)
         self.transition_id = transition_id
 
 
@@ -110,11 +113,39 @@ def start_task(task_key, user, password):
     for transition in transitions["transitions"]:
         if transition["name"].lower() == "start progress":
             return make_jira_request(
-                StartTaskRequest(task_key, transition["id"], user, password)
+                UpdateTaskRequest(task_key, transition["id"], user, password)
+            )
+
+
+def resolve_task(task_key, user, password, comment=None):
+    if not re.compile("^[A-Z]{2,3}-\d+$").match(task_key):
+        return
+
+    task = make_jira_request(TaskDetailsRequest(task_key, user, password))
+    if task is None:
+        return
+    if task["fields"]["assignee"]["key"] != user:
+        return
+    if task["fields"]["status"]["name"].lower() != "in progress":
+        return
+
+    transitions = make_jira_request(
+        TaskTransitionsRequest(task_key, user, password)
+    )
+    if transitions is None:
+        return
+
+    for transition in transitions["transitions"]:
+        if transition["name"].lower() == "resolve issue":
+            return make_jira_request(
+                UpdateTaskRequest(
+                    task_key, transition["id"], user, password, comment)
             )
 
 
 class JiraWebhookHandler(BaseHTTPServer.BaseHTTPRequestHandler):
+    BASE_BRANCH = "master"
+
     def set_headers(self):
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
@@ -125,20 +156,36 @@ class JiraWebhookHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     def do_GET(self):
         self.set_headers()
-        self.wfile.write(json.dumps({"response": "OK"}))
 
     def do_POST(self):
-        print self.path
+        self.set_headers()
         if self.path == "/jira":
             form = cgi.FieldStorage(
                 self.rfile, self.headers, environ={"REQUEST_METHOD": "POST"}
             )
-            print json.loads(form.file.read())
-            self.set_headers()
+            data = json.loads(form.file.read())
+            if data["action"].lower() != "closed":
+                return
+
+            pull_request = data["pull_request"]
+            if pull_request["base"]["ref"] != self.BASE_BRANCH:
+                return
+            if pull_request["merged"] is not True:
+                return
+            branch = pull_request["head"]["ref"]
+            comment = "Merged {}".format(pull_request["html_url"])
+            resolve_task(branch, self.server.user, self.server.password, comment)
 
 
-def run_webhook(host, port, handler=JiraWebhookHandler):
-    server = BaseHTTPServer.HTTPServer((host, port), handler)
+class JiraWebhookServer(BaseHTTPServer.HTTPServer):
+    def __init__(self, user, password, *args, **kwargs):
+        BaseHTTPServer.HTTPServer.__init__(self, *args, **kwargs)
+        self.user = user
+        self.password = password
+
+
+def run_server(user, password, host, port, handler_class=JiraWebhookHandler):
+    server = JiraWebhookServer(user, password, (host, port), handler_class)
     print time.asctime(), "- Webhook server {}:{} started.".format(host, port)
     try:
         server.serve_forever()
@@ -167,7 +214,7 @@ def main():
         return
 
     if args.listen:
-        run_webhook("127.0.0.1", args.port, JiraWebhookHandler)
+        run_server(args.user, args.password, "127.0.0.1", args.port)
     else:
         start_task(args.branch, args.user, args.password)
 
