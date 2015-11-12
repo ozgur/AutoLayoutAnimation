@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import argparse
+import BaseHTTPServer
 import base64
+import cgi
 import json
 import os
 import re
+import time
 import socket
 import sys
 import urllib2
@@ -84,38 +88,88 @@ def make_jira_request(request):
     return request.response
 
 
-def main():
-    if len(sys.argv) < 4:
+def start_task(task_key, user, password):
+    if not re.compile("^[A-Z]{2,3}-\d+$").match(task_key):
         return
 
-    branch, user, password = sys.argv[1:]
-
-    if not re.compile("^[A-Z]{2,3}-\d+$").match(branch):
-        return
-
-    task = make_jira_request(TaskDetailsRequest(branch, user, password))
+    task = make_jira_request(TaskDetailsRequest(task_key, user, password))
 
     if task is None:
         return
-
     if task["fields"]["assignee"]["key"] != user:
         return
-
     if task["fields"]["status"]["name"].lower() != "open":
         return
 
     transitions = make_jira_request(
-        TaskTransitionsRequest(branch, user, password)
+        TaskTransitionsRequest(task_key, user, password)
     )
-
     if transitions is None:
         return
 
     for transition in transitions["transitions"]:
         if transition["name"].lower() == "start progress":
             return make_jira_request(
-                StartTaskRequest(branch, transition["id"], user, password)
+                StartTaskRequest(task_key, transition["id"], user, password)
             )
+
+
+class JiraWebhookHandler(BaseHTTPServer.BaseHTTPRequestHandler):
+    def set_headers(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+
+    def do_HEAD(self):
+        self.set_headers()
+
+    def do_GET(self):
+        self.set_headers()
+        self.wfile.write(json.dumps({"response": "OK"}))
+
+    def do_POST(self):
+        print self.path
+        if self.path == "/jira":
+            form = cgi.FieldStorage(
+                self.rfile, self.headers, environ={"REQUEST_METHOD": "POST"}
+            )
+            print json.loads(form.file.read())
+            self.set_headers()
+
+
+def run_webhook(host, port, handler=JiraWebhookHandler):
+    server = BaseHTTPServer.HTTPServer((host, port), handler)
+    print time.asctime(), "- Webhook server {}:{} started.".format(host, port)
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    server.server_close()
+    print time.asctime(), "- Webhook server {}:{} stopped.".format(host, port)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-l", "--listen", help="start webhook server", action="store_true"
+    )
+    parser.add_argument(
+        "-p", "--port", help="webook server port", type=int, default=8888
+    )
+    parser.add_argument("-u", "--user", help="JIRA username", type=str)
+    parser.add_argument("-w", "--password", help="JIRA password", type=str)
+    parser.add_argument(
+        "-b", "--branch", help="branch name", type=str, default="master"
+    )
+    args = parser.parse_args()
+
+    if not (args.user and args.password):
+        return
+
+    if args.listen:
+        run_webhook("127.0.0.1", args.port, JiraWebhookHandler)
+    else:
+        start_task(args.branch, args.user, args.password)
 
 
 if __name__ == "__main__":
