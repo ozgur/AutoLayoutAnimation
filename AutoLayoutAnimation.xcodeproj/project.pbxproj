@@ -14,6 +14,7 @@
 		2E0C696E1BD70DC100365324 /* NestedObjectMapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0C696C1BD70DC100365324 /* NestedObjectMapperViewController.swift */; };
 		2E0C696F1BD70DC100365324 /* NestedObjectMapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E0C696D1BD70DC100365324 /* NestedObjectMapperViewController.xib */; };
 		2E0C69711BD70ED000365324 /* City.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E0C69701BD70ED000365324 /* City.json */; };
+		2E0E9A5D1BF2F5AD00A496B7 /* Scripts in Resources */ = {isa = PBXBuildFile; fileRef = 2E0E9A5C1BF2F5AD00A496B7 /* Scripts */; };
 		2E126C701BCF03DD00A99F3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E126C6F1BCF03DD00A99F3C /* AppDelegate.swift */; };
 		2E126C721BCF03DD00A99F3C /* BoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E126C711BCF03DD00A99F3C /* BoxViewController.swift */; };
 		2E126C751BCF03DD00A99F3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E126C731BCF03DD00A99F3C /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		2E0C696C1BD70DC100365324 /* NestedObjectMapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedObjectMapperViewController.swift; sourceTree = "<group>"; };
 		2E0C696D1BD70DC100365324 /* NestedObjectMapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NestedObjectMapperViewController.xib; sourceTree = "<group>"; };
 		2E0C69701BD70ED000365324 /* City.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = City.json; sourceTree = "<group>"; };
+		2E0E9A5C1BF2F5AD00A496B7 /* Scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Scripts; sourceTree = "<group>"; };
 		2E126C6C1BCF03DD00A99F3C /* AutoLayoutAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLayoutAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E126C6F1BCF03DD00A99F3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E126C711BCF03DD00A99F3C /* BoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				2E126C6D1BCF03DD00A99F3C /* Products */,
 				728E524E266BA379DE984DD8 /* Pods */,
 				83468D6CA8782D6EA5773263 /* Frameworks */,
+				2E0E9A5C1BF2F5AD00A496B7 /* Scripts */,
 			);
 			sourceTree = "<group>";
 		};
@@ -505,6 +508,7 @@
 				2EBD6FF21BD566A2007351D1 /* AlamofireViewController.xib in Resources */,
 				2E2A148D1BF12B7000172CA1 /* BoxViewController.xib in Resources */,
 				2E4ED1481BDEA764005730BD /* UserListViewController.xib in Resources */,
+				2E0E9A5D1BF2F5AD00A496B7 /* Scripts in Resources */,
 				2E3975D41BD8016C0084D5C4 /* sanfrancisco@3x.jpg in Resources */,
 				2E4ED1501BDED1B7005730BD /* UserCollectionViewCell.xib in Resources */,
 				2EBD70011BD5941B007351D1 /* AlamofireDownloadViewController.xib in Resources */,
