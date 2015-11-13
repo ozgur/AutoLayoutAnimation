@@ -8,8 +8,11 @@ import cgi
 import json
 import os
 import re
+import signal
 import time
+import shlex
 import socket
+import subprocess
 import sys
 import urllib2
 
@@ -93,54 +96,62 @@ def make_jira_request(request):
 
 def start_task(task_key, user, password):
     if not re.compile("^[A-Z]{2,3}-\d+$").match(task_key):
-        return
+        return False
 
     task = make_jira_request(TaskDetailsRequest(task_key, user, password))
 
     if task is None:
-        return
+        return False
+
     if task["fields"]["assignee"]["key"] != user:
-        return
+        return False
+
     if task["fields"]["status"]["name"].lower() != "open":
-        return
+        return False
 
     transitions = make_jira_request(
         TaskTransitionsRequest(task_key, user, password)
     )
     if transitions is None:
-        return
+        return False
 
     for transition in transitions["transitions"]:
         if transition["name"].lower() == "start progress":
-            return make_jira_request(
+            make_jira_request(
                 UpdateTaskRequest(task_key, transition["id"], user, password)
             )
+            return True
+
+    return False
 
 
 def resolve_task(task_key, user, password, comment=None):
     if not re.compile("^[A-Z]{2,3}-\d+$").match(task_key):
-        return
+        return False
 
     task = make_jira_request(TaskDetailsRequest(task_key, user, password))
     if task is None:
-        return
+        return False
     if task["fields"]["assignee"]["key"] != user:
-        return
+        return False
     if task["fields"]["status"]["name"].lower() != "in progress":
-        return
+        return False
 
     transitions = make_jira_request(
         TaskTransitionsRequest(task_key, user, password)
     )
     if transitions is None:
-        return
+        return False
 
     for transition in transitions["transitions"]:
         if transition["name"].lower() == "resolve issue":
-            return make_jira_request(
+            make_jira_request(
                 UpdateTaskRequest(
                     task_key, transition["id"], user, password, comment)
             )
+            return True
+
+    return False
 
 
 class JiraWebhookHandler(BaseHTTPServer.BaseHTTPRequestHandler):
@@ -184,7 +195,9 @@ class JiraWebhookServer(BaseHTTPServer.HTTPServer):
         self.password = password
 
 
-def run_server(user, password, host, port, handler_class=JiraWebhookHandler):
+def run_server_forever(user, password, host, port,
+                       handler_class=JiraWebhookHandler, force_kill=False):
+
     server = JiraWebhookServer(user, password, (host, port), handler_class)
     print time.asctime(), "- Webhook server {}:{} started.".format(host, port)
     try:
@@ -193,6 +206,27 @@ def run_server(user, password, host, port, handler_class=JiraWebhookHandler):
         pass
     server.server_close()
     print time.asctime(), "- Webhook server {}:{} stopped.".format(host, port)
+
+def kill_server(port):
+    lsof = subprocess.Popen(
+        shlex.split("lsof -n -i4TCP:{}".format(port)), stdout=subprocess.PIPE
+    )
+    grep = subprocess.Popen(
+        shlex.split("grep LISTEN"), stdin=lsof.stdout, stdout=subprocess.PIPE
+    )
+    awk = subprocess.Popen(
+        shlex.split("awk '{ print $2; }'"), stdin=grep.stdout, stdout=subprocess.PIPE
+    )
+    out, error = awk.communicate()
+    lsof.kill()
+
+    if error:
+        return False
+    elif not out:
+        return True
+    else:
+        os.kill(int(out), signal.SIGTERM)
+        return True
 
 
 def main():
@@ -203,6 +237,9 @@ def main():
     parser.add_argument(
         "-p", "--port", help="webook server port", type=int, default=8888
     )
+    parser.add_argument(
+        "-f", "--force", help="force kill server", action="store_true"
+    )
     parser.add_argument("-u", "--user", help="JIRA username", type=str)
     parser.add_argument("-w", "--password", help="JIRA password", type=str)
     parser.add_argument(
@@ -211,12 +248,18 @@ def main():
     args = parser.parse_args()
 
     if not (args.user and args.password):
-        return
+        return False
+
+    if args.force:
+        kill_server(args.port)
 
     if args.listen:
-        run_server(args.user, args.password, "127.0.0.1", args.port)
+        run_server_forever(
+            args.user, args.password, "127.0.0.1", args.port, force_kill=args.force
+        )
+        return True
     else:
-        start_task(args.branch, args.user, args.password)
+        return start_task(args.branch, args.user, args.password)
 
 
 if __name__ == "__main__":
