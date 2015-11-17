@@ -37,7 +37,6 @@
 		2E4ED1501BDED1B7005730BD /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4ED14E1BDED1B7005730BD /* UserCollectionViewCell.xib */; };
 		2E8E48901BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E488E1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift */; };
 		2E8E48911BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E8E488F1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib */; };
-		2E96FA631BED996700BD8169 /* dump_xcs_variables.py in Resources */ = {isa = PBXBuildFile; fileRef = 2E96FA621BED996700BD8169 /* dump_xcs_variables.py */; };
 		2E9732291BDDCFD4007FA27C /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9732281BDDCFD4007FA27C /* UserDataSource.swift */; };
 		2E97322B1BDDD497007FA27C /* Users.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E97322A1BDDD497007FA27C /* Users.plist */; };
 		2E97323C1BDDDBB9007FA27C /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E97323B1BDDDBB9007FA27C /* UserTests.swift */; };
@@ -109,7 +108,6 @@
 		2E4ED14E1BDED1B7005730BD /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
 		2E8E488E1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireSerializeViewController.swift; sourceTree = "<group>"; };
 		2E8E488F1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofireSerializeViewController.xib; sourceTree = "<group>"; };
-		2E96FA621BED996700BD8169 /* dump_xcs_variables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = dump_xcs_variables.py; sourceTree = "<group>"; };
 		2E9732281BDDCFD4007FA27C /* UserDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
 		2E97322A1BDDD497007FA27C /* Users.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Users.plist; sourceTree = "<group>"; };
 		2E9732301BDDDB97007FA27C /* AutoLayoutAnimationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoLayoutAnimationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,7 +182,6 @@
 		2E126C631BCF03DD00A99F3C = {
 			isa = PBXGroup;
 			children = (
-				2E96FA611BED994B00BD8169 /* XCS */,
 				2E126C6E1BCF03DD00A99F3C /* AutoLayoutAnimation */,
 				2E9732311BDDDB97007FA27C /* AutoLayoutAnimationTests */,
 				2E126C6D1BCF03DD00A99F3C /* Products */,
@@ -338,14 +335,6 @@
 				2EB333B41BE2BB74001827B5 /* CoreAnimationViewController.swift */,
 			);
 			name = Animation;
-			sourceTree = "<group>";
-		};
-		2E96FA611BED994B00BD8169 /* XCS */ = {
-			isa = PBXGroup;
-			children = (
-				2E96FA621BED996700BD8169 /* dump_xcs_variables.py */,
-			);
-			name = XCS;
 			sourceTree = "<group>";
 		};
 		2E9732251BDDCF3C007FA27C /* User */ = {
@@ -513,7 +502,6 @@
 				2E4ED1501BDED1B7005730BD /* UserCollectionViewCell.xib in Resources */,
 				2EBD70011BD5941B007351D1 /* AlamofireDownloadViewController.xib in Resources */,
 				2E0C69711BD70ED000365324 /* City.json in Resources */,
-				2E96FA631BED996700BD8169 /* dump_xcs_variables.py in Resources */,
 				2EBD70051BD5A8FB007351D1 /* AlamofirePaginationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,7 +558,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/dump_xcs_variables.py\" \".xcsenv\"";
+			shellScript = "\"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/Scripts/XcodeServer/dump_env_variables.py\" \".xcsenv\"";
 		};
 		407AB9FE8095239E9F78D129 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -7,6 +7,7 @@ import base64
 import cgi
 import json
 import os
+import random
 import re
 import shlex
 import signal
@@ -178,11 +179,14 @@ class UpdateTaskRequest(JiraRequest):
     comment -- Comment to be added into task history. Omitted if it is NULL.
     """
     def __init__(
-        self, host, task_key, transition_key, username, password, comment=None):
+        self, host, task_key, transition_key, username, password,
+        assignee=None, comment=None):
 
         data = {"transition": {"id": transition_key}}
         if comment:
             data.update({"update": {"comment": [{"add": {"body": comment}}]}})
+        if assignee:
+            data.update({"fields": {"assignee": {"name": assignee}}})
 
         url = "/rest/api/2/issue/{}/transitions".format(task_key)
         super(UpdateTaskRequest, self).__init__(host, url, (username, password), data)
@@ -223,7 +227,10 @@ def get_task(host, task_key, user, password, statuses=None):
     if not re.compile("^[A-Z]{2,3}-\d+$").match(task_key):
         return None
 
-    task = make_http_request(TaskDetailsRequest(host, task_key, user, password))
+    try:
+        task = make_http_request(TaskDetailsRequest(host, task_key, user, password))
+    except urllib2.HTTPError:
+        return None
 
     if not task:
         return None
@@ -273,7 +280,7 @@ def start_task(host, task_key, user, password):
     return False
 
 
-def resolve_task(host, task_key, user, password, comment=None):
+def resolve_task(host, task_key, user, password, assignee=None, comment=None):
     """Shortcut function for transitioning a task to "Resolved". Internally
     it calls `get_task` to retrieve the task info and updates the status if
     possible.
@@ -285,7 +292,8 @@ def resolve_task(host, task_key, user, password, comment=None):
     password -- JIRA password for authentication.
 
     Keyword arguments:
-    comment -- Additional comment message after transition. Optional.
+    assignee -- New assignee of task after the transition. Optional.
+    comment  -- Additional comment message after transition. Optional.
     """
     task = get_task(host, task_key, user, password, (Status.IN_PROGRESS,))
     if not task:
@@ -301,7 +309,7 @@ def resolve_task(host, task_key, user, password, comment=None):
         if case_insensitive_match(transition["name"], Transition.RESOLVE_ISSUE):
             make_http_request(
                 UpdateTaskRequest(host, task_key, transition["id"],
-                                  user, password, comment)
+                                  user, password, assignee, comment)
             )
             return True
 
@@ -353,27 +361,31 @@ class JiraWebhookHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
             branch = pull_request["head"]["ref"]
             comment = "Merged {}".format(pull_request["html_url"])
+            assignee = random.choice(self.server.qa_users or [None])
             resolve_task(
                 self.server.jira_host, branch, self.server.user,
-                self.server.password, comment)
+                self.server.password, assignee, comment)
 
 
 class JiraWebhookServer(BaseHTTPServer.HTTPServer):
     """Server instance subclassed from `BaseHTTPServer.HTTPServer` to just
     hold the authentication credentials passed from the bash environment.
     """
-    def __init__(self, jira_host, user, password, *args, **kwargs):
+    def __init__(self, jira_host, user, password, qa_users, *args, **kwargs):
         BaseHTTPServer.HTTPServer.__init__(self, *args, **kwargs)
         self.jira_host = jira_host
         self.user = user
         self.password = password
+        self.qa_users = qa_users
 
 
-def run_server_forever(port, jira_host, user, password,
+def run_server_forever(port, jira_host, user, password, qa_users,
                        handler_class=JiraWebhookHandler, force_kill=False):
     """ Starts webhook server. """
     host = "127.0.0.1"  # localhost
-    server = JiraWebhookServer(jira_host, user, password, (host, port), handler_class)
+    server = JiraWebhookServer(
+        jira_host, user, password, qa_users, (host, port), handler_class)
+
     print time.asctime(), "- Webhook server {}:{} started.".format(host, port)
     try:
         server.serve_forever()
@@ -423,6 +435,7 @@ def main():
     parser.add_argument("-n", "--host", help="JIRA API host", type=str)
     parser.add_argument("-u", "--user", help="JIRA username", type=str)
     parser.add_argument("-w", "--password", help="JIRA password", type=str)
+    parser.add_argument("-q", "--qa", help="JIRA QA users", nargs="*", type=str)
     args = parser.parse_args()
 
     if not (args.user and args.password):
@@ -433,8 +446,8 @@ def main():
 
     if args.listen:
         run_server_forever(
-            args.port, args.host, args.user, args.password, force_kill=args.force
-        )
+            args.port, args.host, args.user, args.password, args.qa,
+            force_kill=args.force)
         return True
     else:
         return start_task(args.host, args.branch, args.user, args.password)
