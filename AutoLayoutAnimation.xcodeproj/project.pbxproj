@@ -22,6 +22,7 @@
 		2E126C7A1BCF03DD00A99F3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E126C781BCF03DD00A99F3C /* LaunchScreen.storyboard */; };
 		2E1F3F721BE7366B0045F3EF /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1F3F711BE7366B0045F3EF /* ImageViewController.swift */; };
 		2E1F3F791BE827AD0045F3EF /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1F3F781BE827AD0045F3EF /* String+Additions.swift */; };
+		2E2399A21BFBC49B00E52BBD /* CAReplicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2399A11BFBC49B00E52BBD /* CAReplicatorViewController.swift */; };
 		2E2A14861BF11D8B00172CA1 /* AccessibilityIdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2A14851BF11D8B00172CA1 /* AccessibilityIdentifierTests.swift */; };
 		2E2A148D1BF12B7000172CA1 /* BoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E2A148C1BF12B7000172CA1 /* BoxViewController.xib */; };
 		2E2A14FC1BF1760500172CA1 /* CAScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2A14FB1BF1760500172CA1 /* CAScrollViewController.swift */; };
@@ -89,6 +90,7 @@
 		2E188A151BEB011C00FF3CB9 /* IvarAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IvarAccess.h; path = ../IvarAccess.h; sourceTree = "<group>"; };
 		2E1F3F711BE7366B0045F3EF /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		2E1F3F781BE827AD0045F3EF /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
+		2E2399A11BFBC49B00E52BBD /* CAReplicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAReplicatorViewController.swift; path = autolayoutanimation/CAReplicatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		2E2A14851BF11D8B00172CA1 /* AccessibilityIdentifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifierTests.swift; sourceTree = "<group>"; };
 		2E2A148C1BF12B7000172CA1 /* BoxViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoxViewController.xib; sourceTree = "<group>"; };
 		2E2A14FB1BF1760500172CA1 /* CAScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAScrollViewController.swift; sourceTree = "<group>"; };
@@ -203,13 +205,13 @@
 		2E126C6E1BCF03DD00A99F3C /* AutoLayoutAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				2E2A14FA1BF175FC00172CA1 /* Layers */,
 				2E188A161BEB08B500FF3CB9 /* 3rd Party */,
 				2E1F3F6A1BE723990045F3EF /* Extensions */,
 				2E126C6F1BCF03DD00A99F3C /* AppDelegate.swift */,
 				2EBE65641BD1859F004ABC5D /* MainViewController.swift */,
 				2E126C731BCF03DD00A99F3C /* Main.storyboard */,
 				2E2D65781BE91E6700859797 /* Image Scaling */,
+				2E2A14FA1BF175FC00172CA1 /* Layers */,
 				2E8E48931BD6BD52003A8CD3 /* Animation */,
 				2E8E48921BD6BD45003A8CD3 /* Alamofire */,
 				2E0C69681BD6FB1500365324 /* Mapper */,
@@ -254,6 +256,7 @@
 		2E2A14FA1BF175FC00172CA1 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				2E2399A11BFBC49B00E52BBD /* CAReplicatorViewController.swift */,
 				2E2A14FB1BF1760500172CA1 /* CAScrollViewController.swift */,
 			);
 			name = Layers;
@@ -558,7 +561,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/Scripts/XcodeServer/dump_env_variables.py\" \".xcsenv\"";
+			shellScript = "appVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\")\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\")\n\"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/Scripts/XcodeServer/dump_env_variables.py\" \".xcsenv\" \"$appVersion\" \"$buildNumber\"";
 		};
 		407AB9FE8095239E9F78D129 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -651,6 +654,7 @@
 				2E4ED14F1BDED1B7005730BD /* UserCollectionViewCell.swift in Sources */,
 				2EBE65671BD1891C004ABC5D /* TransformViewController.swift in Sources */,
 				2E1F3F721BE7366B0045F3EF /* ImageViewController.swift in Sources */,
+				2E2399A21BFBC49B00E52BBD /* CAReplicatorViewController.swift in Sources */,
 				2E0C696E1BD70DC100365324 /* NestedObjectMapperViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,9 +36,16 @@ def main():
 
         version = get_environment_variable_if_possible(
             "XCODE_VERSION_ACTUAL", "")
-        parser.set("Xcode", "Version", version)
+        parser.set("Xcode", "Xcode", version)
 
+        user = get_environment_variable_if_possible(
+            "INSTALL_OWNER",
+            get_environment_variable_if_possible("ALTERNATE_OWNER", "")
+        )
+        parser.set("Xcode", "User", user)
+        parser.set("Xcode", "Version", "{} ({})".format(version, build))
         parser.write(f)
+
 
 if __name__ == "__main__":
     main()

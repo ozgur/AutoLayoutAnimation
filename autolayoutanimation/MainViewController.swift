@@ -34,7 +34,8 @@ class MainViewController: UITableViewController {
       "Image Scaling"
     ],
     [
-      "Scrollable Layers"
+      "Scrollable Layers",
+      "Replicator Layers"
     ],
     [
       "Animating Height",
@@ -121,6 +122,8 @@ class MainViewController: UITableViewController {
       switch indexPath.row {
       case 0:
         self.presentViewController(CAScrollViewController(), animated: true, completion: nil)
+      case 1:
+        self.navigationController?.pushViewController(CAReplicatorViewController(), animated: true)
       default:
         break
       }
