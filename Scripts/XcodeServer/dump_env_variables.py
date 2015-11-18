@@ -43,6 +43,8 @@ def main():
             get_environment_variable_if_possible("ALTERNATE_OWNER", "")
         )
         parser.set("Xcode", "User", user)
+
+        version, build = sys.argv[2], sys.argv[3]
         parser.set("Xcode", "Version", "{} ({})".format(version, build))
         parser.write(f)
 
