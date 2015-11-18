@@ -87,7 +87,7 @@ class UserDataManagerSpec: QuickSpec {
             self.userDataHTTPResponse = nil
           }
         }
-        expect(self.userDataHTTPResponse).toEventuallyNot(beNil(), timeout: 3)
+        expect(self.userDataHTTPResponse).toEventuallyNot(beNil(), timeout: 5)
       }
       
       it("will test success") {
