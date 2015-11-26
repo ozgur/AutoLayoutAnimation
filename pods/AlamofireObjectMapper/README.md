@@ -36,15 +36,17 @@ Given a URL which returns weather data in the following form:
 You can use this extension as the follows:
 ```swift
 let URL = "https://raw.githubusercontent.com/tristanhimmelman/AlamofireObjectMapper/d8bb95982be8a11a2308e779bb9a9707ebe42ede/sample_json"
-Alamofire.request(.GET, URL, parameters: nil)
-         .responseObject { (response: WeatherResponse?, error: ErrorType?) in
-            println(response?.location)
-            if let threeDayForecast = response?.threeDayForecast {
-                for forecast in threeDayForecast {
-                    println(forecast.day)
-                    println(forecast.temperature)           
-                }
-            }
+Alamofire.request(.GET, URL).responseObject("data") { (response: Response<WeatherResponse, NSError>) in
+
+    let weatherResponse = response.result.value
+    
+    print(weatherResponse?.location)
+    if let threeDayForecast = weatherResponse?.threeDayForecast {
+        for forecast in threeDayForecast {
+            print(forecast.day)
+            print(forecast.temperature)           
+        }
+    }
 }
 ```
 
@@ -131,25 +133,27 @@ For example, if your endpoint returns the following:
 You can request and map it as follows:
 ```swift
 let URL = "https://raw.githubusercontent.com/tristanhimmelman/AlamofireObjectMapper/f583be1121dbc5e9b0381b3017718a70c31054f7/sample_array_json"
-Alamofire.request(.GET, URL, parameters: nil)
-         .responseArray { (response: [Forecast]?, error: ErrorType?) in
-            println(response?.location)
-            if let response = response {
-                for forecast in response {
-                    println(forecast.day)
-                    println(forecast.temperature)           
-                }
-            }
+Alamofire.request(.GET, URL).responseArray { (response: Response<[Forecast], NSError>) in
+
+    let forecastArray = response.result.value
+    
+    if let forecastArray = forecastArray {
+        for forecast in forecastArray {
+            print(forecast.day)
+            print(forecast.temperature)           
+        }
+    }
 }
+
 ```
 
 #Installation
 AlamofireObjectMapper can be added to your project using [Cocoapods](https://cocoapods.org/) by adding the following line to your Podfile:
 ```
-pod 'AlamofireObjectMapper', '~> 1.0'
+pod 'AlamofireObjectMapper', '~> 2.0'
 ```
 
 If your using [Carthage](https://github.com/Carthage/Carthage) you can add a dependency on AlamofireObjectMapper by adding it to your Cartfile:
 ```
-github "tristanhimmelman/AlamofireObjectMapper" ~> 1.0
+github "tristanhimmelman/AlamofireObjectMapper" ~> 2.0
 ```

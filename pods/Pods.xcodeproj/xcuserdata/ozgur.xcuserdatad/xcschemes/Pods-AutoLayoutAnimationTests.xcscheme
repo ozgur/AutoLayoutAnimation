@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C00731EB573D13FA11EDA6DE'
+               BlueprintIdentifier = '1847EEF7DCC65E244A2DD90C'
                BlueprintName = 'Pods-AutoLayoutAnimationTests'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_AutoLayoutAnimationTests.framework'>
