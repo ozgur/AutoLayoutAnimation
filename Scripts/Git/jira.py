@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# Please refer to https://github.com/redbeacon/marketpro-ios/wiki/Jira-Integration for more information.
+
+__author__ = "Ozgur Vatansever"
+__copyright__ = "Copyright 2015, Techshed"
+
+
 import argparse
 import BaseHTTPServer
 import base64
@@ -11,7 +17,6 @@ import random
 import re
 import shlex
 import signal
-import socket
 import time
 import subprocess
 import sys
@@ -33,6 +38,7 @@ def enum(**enums):
 HTTPMethod = enum(GET="GET", POST="POST", PUT="PUT", DELETE="DELETE")
 Status = enum(OPEN="Open", IN_PROGRESS="In Progress", REOPENED="Reopened")
 Transition = enum(START_PROGRESS="Start Progress", RESOLVE_ISSUE="Resolve Issue")
+RELATED_ISSUE_TYPE="has to be finished together with"
 
 
 class JiraRequest(object):
@@ -192,6 +198,23 @@ class UpdateTaskRequest(JiraRequest):
         super(UpdateTaskRequest, self).__init__(host, url, (username, password), data)
 
 
+class AddCommentRequest(JiraRequest):
+    """Represents a request for adding comment into a task.
+
+    Arguments:
+    host           -- API host name without scheme. (ex: jira.atlassian.com)
+    task_key       -- Identifier that represents a task in JIRA. (ex: OV-1234)
+    transition_key -- ID of the transition.
+    username       -- JIRA username for authentication.
+    password       -- JIRA password for authentication.
+    comment        -- Comment to be added into task history.
+    """
+    def __init__(self, host, task_key, username, password, comment):
+        data = {"body": comment}
+        url = "/rest/api/2/issue/{}/comment".format(task_key)
+        super(AddCommentRequest, self).__init__(host, url, (username, password), data)
+
+
 def make_http_request(request):
     """Helper function for firing an HTTP request with given JIRA request
     returning the response.
@@ -224,7 +247,7 @@ def get_task(host, task_key, user, password, statuses=None):
     statuses -- List of status for doing additional lookup along with
     `task_key` for finding the task. Omitted when it is left NULL.
     """
-    if not re.compile("^[A-Z]{2,3}-\d+$").match(task_key):
+    if not (task_key and re.compile("^[A-Z]{2,3}-\d+$").match(task_key)):
         return None
 
     try:
@@ -275,9 +298,14 @@ def start_task(host, task_key, user, password):
             make_http_request(
                 UpdateTaskRequest(host, task_key, transition["id"], user, password)
             )
-            return True
+            break
 
-    return False
+    for task in task["fields"].get("issuelinks", []):
+        if case_insensitive_match(task["type"]["inward"], RELATED_ISSUE_TYPE):
+            related_task_key = task.get("inwardIssue", {}).get("key")
+            start_task(host, related_task_key, user, password)
+
+    return True
 
 
 def resolve_task(host, task_key, user, password, assignee=None, comment=None):
@@ -326,7 +354,6 @@ class JiraWebhookHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     information to mark the corresponding JIRA task as "Resolved" and calls
     the designated API endpoint to do so.
     """
-    GIT_MASTER_BRANCH = "master"
     JIRA_WEBHOOK_URL = "/jira"
 
     def set_headers(self):
@@ -348,23 +375,31 @@ class JiraWebhookHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 self.rfile, self.headers, environ={"REQUEST_METHOD": "POST"}
             )
             data = json.loads(form.file.read())
-            if not case_insensitive_match(data["action"], "closed"):
-                return
 
-            pull_request = data["pull_request"]
-            if not case_insensitive_match(
-                pull_request["base"]["ref"], self.GIT_MASTER_BRANCH):
-                return
+            if case_insensitive_match(data["action"], "closed"):
+                pull_request = data["pull_request"]
 
-            if pull_request["merged"] is not True:
-                return
+                if pull_request["merged"] is True:
+                    return
 
-            branch = pull_request["head"]["ref"]
-            comment = "Merged {}".format(pull_request["html_url"])
-            assignee = random.choice(self.server.qa_users or [None])
-            resolve_task(
-                self.server.jira_host, branch, self.server.user,
-                self.server.password, assignee, comment)
+                branch = pull_request["head"]["ref"]
+                comment = "Merged {}".format(pull_request["html_url"])
+                assignee = random.choice(self.server.qa_users or [None])
+                resolve_task(
+                    self.server.jira_host, branch, self.server.user,
+                    self.server.password, assignee, comment)
+
+            elif case_insensitive_match(data["action"], "opened"):
+                pull_request = data["pull_request"]
+
+                if pull_request["merged"] is True:
+                    return
+
+                branch = pull_request["head"]["ref"]
+                comment = "In code review: {}".format(pull_request["html_url"])
+                make_http_request(AddCommentRequest(
+                    self.server.jira_host, branch, self.server.user,
+                    self.server.password, comment))
 
 
 class JiraWebhookServer(BaseHTTPServer.HTTPServer):
