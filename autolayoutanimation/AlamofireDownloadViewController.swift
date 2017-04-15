@@ -14,7 +14,7 @@ class AlamofireDownloadViewController: UIViewController {
   @IBOutlet weak var responseLabel: UILabel!
   @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
   
-  private func url(url: String) -> String {
+  fileprivate func url(_ url: String) -> String {
     return "http://httpbin.org" + url
   }
   
@@ -24,28 +24,28 @@ class AlamofireDownloadViewController: UIViewController {
   
   override func loadView() {
     super.loadView()
-    view.backgroundColor = UIColor.whiteColor()
+    view.backgroundColor = UIColor.white
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.edgesForExtendedLayout = .None
+    self.edgesForExtendedLayout = UIRectEdge()
     title = "Alamofire Streaming"
   }
 
-  @IBAction func downloadButtonTapped(sender: UIButton) {
+  @IBAction func downloadButtonTapped(_ sender: UIButton) {
     responseLabel.text = nil
     activityIndicatorView.startAnimating()
     
     let destinationPath = Alamofire.Request.suggestedDownloadDestination(
-      directory: .DocumentDirectory,
-      domain: .UserDomainMask
+      directory: .documentDirectory,
+      domain: .userDomainMask
     )
 
     Alamofire.download(.GET, url("/stream/100"), destination: destinationPath).progress {
       bytesReceived, totalBytesReceived, expectedBytes in
       
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         self.responseLabel.text = "Read \(totalBytesReceived) bytes."
       }
     }

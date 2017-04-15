@@ -9,30 +9,30 @@
 import UIKit
 
 enum UserDataHTTPResponse {
-  case Success([User])
-  case Error(NSError)
+  case success([User])
+  case error(NSError)
 }
 
 class UserDataManager {
 
-  private let dataSource = UserDataSource()
-  private static let shared = UserDataManager()
+  fileprivate let dataSource = UserDataSource()
+  fileprivate static let shared = UserDataManager()
   
   class func sharedInstance() -> UserDataManager {
     return self.shared
   }
   
-  func requestUsers(plist: String, completion: (UserDataHTTPResponse) -> Void) {
+  func requestUsers(_ plist: String, completion: (UserDataHTTPResponse) -> Void) {
     execute(delay: 1.0, repeating: false) {
       if let users = self.dataSource.loadUsersFromPlist(named: plist) {
-        completion(.Success(users))
+        completion(.success(users))
       }
       else {
         let userInfo = [
           NSLocalizedDescriptionKey: "Plist not found or failed to parse.",
           NSLocalizedFailureReasonErrorKey: "Plist not found or failed to parse."
         ]
-        completion(.Error(NSError(domain: "UserDataManagerErrorDomain", code: -999, userInfo: userInfo)))
+        completion(.error(NSError(domain: "UserDataManagerErrorDomain", code: -999, userInfo: userInfo)))
       }
     }
   }

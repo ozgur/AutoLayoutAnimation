@@ -11,8 +11,8 @@ import Alamofire
 
 class AlamofireSerializeViewController: UIViewController {
   
-  @IBOutlet private weak var responseLabel: UILabel!
-  @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+  @IBOutlet fileprivate weak var responseLabel: UILabel!
+  @IBOutlet fileprivate weak var activityIndicatorView: UIActivityIndicatorView!
 
   convenience init() {
     self.init(nibName: "AlamofireSerializeViewController", bundle: nil)
@@ -20,16 +20,16 @@ class AlamofireSerializeViewController: UIViewController {
 
   override func loadView() {
     super.loadView()
-    view.backgroundColor = .whiteColor()
+    view.backgroundColor = .white
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Alamofire Serializer"
-    edgesForExtendedLayout = .None
+    edgesForExtendedLayout = UIRectEdge()
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
     responseLabel.text = nil
@@ -43,14 +43,14 @@ class AlamofireSerializeViewController: UIViewController {
   }
 }
 
-public class HTTPGetResponse: CustomStringConvertible {
+open class HTTPGetResponse: CustomStringConvertible {
   
-  public let args: [String: AnyObject]
-  public let headers: [String: AnyObject]
-  public let origin: [String]
-  public let url: NSURL
+  open let args: [String: AnyObject]
+  open let headers: [String: AnyObject]
+  open let origin: [String]
+  open let url: URL
 
-  init(args: [String: AnyObject], headers: [String: AnyObject], origin: [String], url: NSURL) {
+  init(args: [String: AnyObject], headers: [String: AnyObject], origin: [String], url: URL) {
     self.args = args
     self.headers = headers
     self.origin = origin
@@ -60,24 +60,24 @@ public class HTTPGetResponse: CustomStringConvertible {
   convenience init(data: [String: AnyObject]) {
     let args = data["args"] as? [String: AnyObject] ?? [:]
     let headers = data["headers"] as? [String: AnyObject] ?? [:]
-    let origin = (data["origin"] as? String)?.componentsSeparatedByString(",") ?? []
+    let origin = (data["origin"] as? String)?.components(separatedBy: ",") ?? []
     
-    self.init(args: args, headers: headers, origin: origin, url: NSURL(string: data["url"] as! String)!)
+    self.init(args: args, headers: headers, origin: origin, url: URL(string: data["url"] as! String)!)
   }
   
-  public var description: String {
+  open var description: String {
     let result = NSMutableString()
 
-    result.appendString("Arguments:\n")
+    result.append("Arguments:\n")
 
-    result.appendString(args.map({ (key, value) -> String in
+    result.append(args.map({ (key, value) -> String in
       return key + " -> " + String(value)
-    }).joinWithSeparator("\n"))
+    }).joined(separator: "\n"))
 
-    result.appendString("\n\nOrigin:\n")
-    result.appendString(origin.joinWithSeparator("\n"))
+    result.append("\n\nOrigin:\n")
+    result.append(origin.joined(separator: "\n"))
 
-    result.appendString("\n\nURL:\n")
+    result.append("\n\nURL:\n")
     result.appendString(url.absoluteString)
 
     return String(result)
@@ -86,26 +86,26 @@ public class HTTPGetResponse: CustomStringConvertible {
 
 extension Request {
   
-  private class func HTTPGetResponseSerializer() -> ResponseSerializer<HTTPGetResponse, NSError> {
+  fileprivate class func HTTPGetResponseSerializer() -> ResponseSerializer<HTTPGetResponse, NSError> {
   
     return ResponseSerializer(serializeResponse: {
       (request, response, data, error) -> Result<HTTPGetResponse, NSError> in
       
       guard error == nil else {
-        return Result.Failure(error!)
+        return Result.failure(error!)
       }
       
       do {
-        let JSON = try NSJSONSerialization.JSONObjectWithData(data!, options: [])
-        return Result.Success(HTTPGetResponse(data: JSON as! [String: AnyObject]))
+        let JSON = try JSONSerialization.jsonObject(with: data!, options: [])
+        return Result.success(HTTPGetResponse(data: JSON as! [String: AnyObject]))
         
       } catch {
-        return .Failure(error as NSError)
+        return .failure(error as NSError)
       }
     })
   }
   
-  public func responseHTTPGetResponse(completionHandler: (Response<HTTPGetResponse, NSError>) -> Void) -> Self {
+  public func responseHTTPGetResponse(_ completionHandler: (Response<HTTPGetResponse, NSError>) -> Void) -> Self {
     return response(responseSerializer: Request.HTTPGetResponseSerializer(), completionHandler: completionHandler)
   }
 }

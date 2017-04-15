@@ -15,28 +15,28 @@ class CoreAnimationViewController: UIViewController {
   let passwordConstraints = ConstraintGroup()
   
   let nameTextField: UITextField = {
-    let textField = UITextField(frame: CGRectZero)
+    let textField = UITextField(frame: CGRect.zero)
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.placeholder = "Type your name"
-    textField.borderStyle = UITextBorderStyle.RoundedRect
+    textField.borderStyle = UITextBorderStyle.roundedRect
     textField.defaultTextAttributes = [
-      NSForegroundColorAttributeName: UIColor.darkTextColor(),
-      NSFontAttributeName: UIFont.boldSystemFontOfSize(15.0),
-      NSBackgroundColorAttributeName: UIColor.lightGrayColor()
+      NSForegroundColorAttributeName: UIColor.darkText,
+      NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15.0),
+      NSBackgroundColorAttributeName: UIColor.lightGray
     ]
     return textField
   }()
   
   let passwordTextField: UITextField = {
-    let textField = UITextField(frame: CGRectZero)
+    let textField = UITextField(frame: CGRect.zero)
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.placeholder = "Type your password"
-    textField.borderStyle = UITextBorderStyle.RoundedRect
-    textField.secureTextEntry = true
+    textField.borderStyle = UITextBorderStyle.roundedRect
+    textField.isSecureTextEntry = true
     textField.defaultTextAttributes = [
-      NSForegroundColorAttributeName: UIColor.darkTextColor(),
-      NSFontAttributeName: UIFont.boldSystemFontOfSize(15.0),
-      NSBackgroundColorAttributeName: UIColor.lightGrayColor()
+      NSForegroundColorAttributeName: UIColor.darkText,
+      NSFontAttributeName: UIFont.boldSystemFont(ofSize: 15.0),
+      NSBackgroundColorAttributeName: UIColor.lightGray
     ]
     return textField
   }()
@@ -44,8 +44,8 @@ class CoreAnimationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    edgesForExtendedLayout = UIRectEdge.None
-    view.backgroundColor = .whiteColor()
+    edgesForExtendedLayout = UIRectEdge()
+    view.backgroundColor = .white
     title = "Core Animation"
     
     view.addSubview(nameTextField)
@@ -68,22 +68,22 @@ class CoreAnimationViewController: UIViewController {
     }
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     let animateFromLeft = CABasicAnimation(keyPath: "position.x")
-    animateFromLeft.fromValue = -CGRectGetMidX(view.frame)
-    animateFromLeft.toValue = CGRectGetMidX(view.frame)
+    animateFromLeft.fromValue = -view.frame.midX
+    animateFromLeft.toValue = view.frame.midX
     animateFromLeft.duration = 0.3
     animateFromLeft.delegate = self
     
     animateFromLeft.setValue(nameTextField.layer, forKey: "layer")
-    nameTextField.layer.addAnimation(animateFromLeft, forKey: "animateFromLeft")
+    nameTextField.layer.add(animateFromLeft, forKey: "animateFromLeft")
     
     animateFromLeft.beginTime = CACurrentMediaTime() + 0.2 // delay
 
     animateFromLeft.setValue(passwordTextField.layer, forKey: "layer")
-    passwordTextField.layer.addAnimation(animateFromLeft, forKey: "animateFromLeft")
+    passwordTextField.layer.add(animateFromLeft, forKey: "animateFromLeft")
     
     /**
     *  The below logic is equal to what CA animation is doing above.
@@ -108,8 +108,8 @@ class CoreAnimationViewController: UIViewController {
 
 extension CoreAnimationViewController {
 
-  override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-    if let layer = anim.valueForKey("layer") as? CALayer {
+  override func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    if let layer = anim.value(forKey: "layer") as? CALayer {
       switch layer {
       case nameTextField.layer:
         constrain(nameTextField, v2: view, replace: nameConstraints) { nameTextField, view in

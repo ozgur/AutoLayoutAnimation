@@ -11,47 +11,47 @@ import Cartography
 
 class TransformViewController: UIViewController {
 
-  private let firstLabel: UILabel = {
-    let label = UILabel(frame: CGRectZero)
+  fileprivate let firstLabel: UILabel = {
+    let label = UILabel(frame: CGRect.zero)
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "UA 711"
     label.numberOfLines = 1
-    label.textColor = UIColor.whiteColor()
+    label.textColor = UIColor.white
     label.font = UIFont(name: "HelveticaNeue-CondensedBold", size: 25)
     return label
   }()
   
-  private let secondLabel: UILabel = {
-    let label = UILabel(frame: CGRectZero)
+  fileprivate let secondLabel: UILabel = {
+    let label = UILabel(frame: CGRect.zero)
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.textAlignment = NSTextAlignment.Center
+    label.textAlignment = NSTextAlignment.center
     label.text = "San Francisco"
     label.numberOfLines = 1
-    label.textColor = UIColor.whiteColor()
+    label.textColor = UIColor.white
     label.font = UIFont(name: "HelveticaNeue-CondensedBold", size: 25)
     return label
   }()
   
-  private let thirdLabel: UILabel = {
-    let label = UILabel(frame: CGRectZero)
+  fileprivate let thirdLabel: UILabel = {
+    let label = UILabel(frame: CGRect.zero)
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.textAlignment = NSTextAlignment.Center
+    label.textAlignment = NSTextAlignment.center
     label.text = "Ozgur Vatansever"
     label.numberOfLines = 1
-    label.textColor = UIColor.whiteColor()
+    label.textColor = UIColor.white
     label.font = UIFont(name: "HelveticaNeue-CondensedBold", size: 25)
     return label
   }()
   
-  private let planeView = UIImageView(image: UIImage(named: "plane"))
+  fileprivate let planeView = UIImageView(image: UIImage(named: "plane"))
   
-  private var constraints = ConstraintGroup()
+  fileprivate var constraints = ConstraintGroup()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    edgesForExtendedLayout = UIRectEdge.None
-    view.backgroundColor = UIColor.darkTextColor()
+    edgesForExtendedLayout = UIRectEdge()
+    view.backgroundColor = UIColor.darkText
     title = "Animating Transform Matrix"
     
     planeView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +84,7 @@ class TransformViewController: UIViewController {
     }
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     execute(delay: 1.0, repeating: false) {
@@ -95,46 +95,46 @@ class TransformViewController: UIViewController {
     }
   }
 
-  private func takeOffPlane(imageView: UIImageView) {
+  fileprivate func takeOffPlane(_ imageView: UIImageView) {
     
     let newImageView = UIImageView(image: imageView.image)
     newImageView.center = imageView.center
     imageView.superview?.insertSubview(newImageView, aboveSubview: newImageView)
     
-    imageView.hidden = true
+    imageView.isHidden = true
     
-    UIView.animateKeyframesWithDuration(
-      1.5,
+    UIView.animateKeyframes(
+      withDuration: 1.5,
       delay: 0.0,
-      options: UIViewKeyframeAnimationOptions.BeginFromCurrentState,
+      options: UIViewKeyframeAnimationOptions.beginFromCurrentState,
       animations: {
-        UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.25) {
+        UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
           newImageView.frame.origin.y -= 5.0
           newImageView.frame.origin.x += 80.0
         }
         
-        UIView.addKeyframeWithRelativeStartTime(0.25, relativeDuration: 0.25) {
+        UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25) {
           newImageView.frame.origin.y -= 50.0
           newImageView.frame.origin.x += 100.0
           newImageView.alpha = 0.0
         }
         
-        UIView.addKeyframeWithRelativeStartTime(0.1, relativeDuration: 0.4) {
-          newImageView.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_4 / 2))
+        UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.4) {
+          newImageView.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_4 / 2))
         }
 
-        UIView.addKeyframeWithRelativeStartTime(0.5, relativeDuration: 0.0001) {
-          newImageView.transform = CGAffineTransformIdentity
+        UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.0001) {
+          newImageView.transform = CGAffineTransform.identity
           newImageView.center = CGPoint(x: 0.0, y: imageView.center.y)
         }
         
-        UIView.addKeyframeWithRelativeStartTime(0.51, relativeDuration: 0.49) {
+        UIView.addKeyframe(withRelativeStartTime: 0.51, relativeDuration: 0.49) {
           newImageView.center = imageView.center
           newImageView.alpha = 1.0
         }
       },
       completion: { _ in
-        imageView.hidden = false
+        imageView.isHidden = false
         newImageView.removeFromSuperview()
 
         execute(delay: 0.25, repeating: false) {
@@ -144,7 +144,7 @@ class TransformViewController: UIViewController {
     )
   }
   
-  private func transformSecondLabel(label: UILabel, withText text: String, offset: CGPoint) {
+  fileprivate func transformSecondLabel(_ label: UILabel, withText text: String, offset: CGPoint) {
     let newLabel = UILabel(frame: label.frame)
     newLabel.textAlignment = label.textAlignment
     newLabel.font = label.font
@@ -153,25 +153,25 @@ class TransformViewController: UIViewController {
     newLabel.backgroundColor = label.backgroundColor
     newLabel.alpha = 0.0
     newLabel.text = text
-    newLabel.transform = CGAffineTransformMakeTranslation(offset.x, offset.y)
+    newLabel.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
     
     label.superview?.addSubview(newLabel)
     
-    UIView.animateWithDuration(0.75, delay: 0.0, options: .BeginFromCurrentState, animations: {
-      label.transform = CGAffineTransformMakeTranslation(offset.x, offset.y)
+    UIView.animate(withDuration: 0.75, delay: 0.0, options: .beginFromCurrentState, animations: {
+      label.transform = CGAffineTransform(translationX: offset.x, y: offset.y)
       label.alpha = 0.0
     }, completion: nil)
     
-    UIView.animateWithDuration(
-      0.75,
+    UIView.animate(
+      withDuration: 0.75,
       delay: 0.0,
-      options: UIViewAnimationOptions.BeginFromCurrentState,
+      options: UIViewAnimationOptions.beginFromCurrentState,
       animations: {
-        newLabel.transform = CGAffineTransformIdentity
+        newLabel.transform = CGAffineTransform.identity
         newLabel.alpha = 1.0
       },
       completion: { _ in
-        label.transform = CGAffineTransformIdentity
+        label.transform = CGAffineTransform.identity
         label.alpha = 1.0
         let oldText = label.text!
         label.text = newLabel.text
@@ -184,7 +184,7 @@ class TransformViewController: UIViewController {
     )
   }
 
-  private func transformFirstLabel(label: UILabel, withText text: String, direction: Int) {
+  fileprivate func transformFirstLabel(_ label: UILabel, withText text: String, direction: Int) {
     
     let originalFrame = label.frame
     
@@ -194,30 +194,26 @@ class TransformViewController: UIViewController {
     newLabel.numberOfLines = label.numberOfLines
     newLabel.font = label.font
     newLabel.textColor = label.textColor
-    newLabel.backgroundColor = UIColor.clearColor()
+    newLabel.backgroundColor = UIColor.clear
 
     let newLabelOffset = CGFloat(direction) * originalFrame.height / 2.0
     
-    newLabel.transform = CGAffineTransformConcat(
-      CGAffineTransformMakeScale(1.0, 0.0),
-      CGAffineTransformMakeTranslation(0.0, newLabelOffset)
+    newLabel.transform = CGAffineTransform(scaleX: 1.0, y: 0.0).concatenating(CGAffineTransform(translationX: 0.0, y: newLabelOffset)
     )
 
     label.superview!.addSubview(newLabel)
     
-    UIView.animateWithDuration(0.75,
+    UIView.animate(withDuration: 0.75,
       delay: 0.0,
-      options: [.BeginFromCurrentState, .CurveEaseOut],
+      options: [.beginFromCurrentState, .curveEaseOut],
       animations: { () -> Void in
-        newLabel.transform = CGAffineTransformIdentity
-        label.transform = CGAffineTransformConcat(
-          CGAffineTransformMakeScale(1.0, 0.00001),
-          CGAffineTransformMakeTranslation(0.0, -newLabelOffset)
+        newLabel.transform = CGAffineTransform.identity
+        label.transform = CGAffineTransform(scaleX: 1.0, y: 0.00001).concatenating(CGAffineTransform(translationX: 0.0, y: -newLabelOffset)
         )
       },
       completion: { (finished: Bool) -> Void in
         label.text = newLabel.text
-        label.transform = CGAffineTransformIdentity
+        label.transform = CGAffineTransform.identity
         newLabel.removeFromSuperview()
         execute(delay: 1.0, repeating: false) {
           self.transformFirstLabel(self.firstLabel, withText: originalText, direction: -direction)
@@ -226,13 +222,13 @@ class TransformViewController: UIViewController {
     )
   }
   
-  func rotateThirdLabel(label: UILabel) {
+  func rotateThirdLabel(_ label: UILabel) {
     let animation = CAKeyframeAnimation(keyPath: "transform.rotation.x")
     animation.keyTimes = [0.0, 0.25, 0.50, 0.75, 1.0]
     animation.values = [0.0, -M_PI_2, 0.0, M_PI_2, 0.0]
     animation.duration = 0.6
     animation.repeatCount = 10
     
-    thirdLabel.layer.addAnimation(animation, forKey: nil)
+    thirdLabel.layer.add(animation, forKey: nil)
   }
 }

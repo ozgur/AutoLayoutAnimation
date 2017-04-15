@@ -28,9 +28,9 @@ struct PetCardStore {
     return parsePets()
   }
   
-  private static func parsePets() -> [PetCard] {
+  fileprivate static func parsePets() -> [PetCard] {
     
-    let filePath = NSBundle.mainBundle().pathForResource("Pets", ofType: "plist")!
+    let filePath = Bundle.main.path(forResource: "Pets", ofType: "plist")!
     let dictionary = NSDictionary(contentsOfFile: filePath)!
     let petData = dictionary["Pets"] as! [[String : String]]
     

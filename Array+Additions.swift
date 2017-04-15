@@ -9,8 +9,8 @@
 import UIKit
 
 extension Array { 
-  func indexOf<Element: Equatable>(item: Element) -> Int? {
-    return self.indexOf({ (object) -> Bool in
+  func indexOf<Element: Equatable>(_ item: Element) -> Int? {
+    return self.index(where: { (object) -> Bool in
       return (object as! Element) == item
     })
   }

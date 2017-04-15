@@ -1,9 +1,11 @@
-EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Alamofire" "$PODS_CONFIGURATION_BUILD_DIR/AlamofireImage" "$PODS_CONFIGURATION_BUILD_DIR/AlamofireObjectMapper" "$PODS_CONFIGURATION_BUILD_DIR/Cartography" "$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper" "$PODS_CONFIGURATION_BUILD_DIR/Ono"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include/libxml2
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/Alamofire.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/AlamofireImage.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/AlamofireObjectMapper.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Cartography.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/ObjectMapper.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Ono.framework/Headers"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/AlamofireImage/AlamofireImage.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/AlamofireObjectMapper/AlamofireObjectMapper.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Cartography/Cartography.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper/ObjectMapper.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Ono/Ono.framework/Headers"
 OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "AlamofireImage" -framework "AlamofireObjectMapper" -framework "Cartography" -framework "ObjectMapper" -framework "Ono"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
-PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-AutoLayoutAnimation
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

@@ -14,15 +14,15 @@ class UserCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
   var column = 0
   var height: CGFloat = 0.0
   
-  override func copyWithZone(zone: NSZone) -> AnyObject {
-    let copy = super.copyWithZone(zone) as! UserCollectionViewLayoutAttributes
+  override func copy(with zone: NSZone?) -> Any {
+    let copy = super.copy(with: zone) as! UserCollectionViewLayoutAttributes
     copy.row = row
     copy.column = column
     copy.height = height
     return copy
   }
   
-  override func isEqual(object: AnyObject?) -> Bool {
+  override func isEqual(_ object: Any?) -> Bool {
     if let object = object as? UserCollectionViewLayoutAttributes {
       if row != object.row || column != object.column || height != object.height {
         return false
@@ -36,9 +36,9 @@ class UserCollectionViewLayoutAttributes: UICollectionViewLayoutAttributes {
 protocol UserCollectionViewLayoutDelegate: UICollectionViewDelegate {
   
   func collectionView(
-    collectionView: UICollectionView,
+    _ collectionView: UICollectionView,
     layout userCollectionViewLayout: UserCollectionViewLayout,
-    heightForUserAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    heightForUserAtIndexPath indexPath: IndexPath) -> CGFloat
 }
 
 @IBDesignable
@@ -52,45 +52,45 @@ class UserCollectionViewLayout: UICollectionViewLayout {
     }
   }
   
-  var animatingIndexPath: NSIndexPath!
+  var animatingIndexPath: IndexPath!
   
-  private var contentHeight: CGFloat = 0.0
-  private var cachedAttributes = [UserCollectionViewLayoutAttributes]()
+  fileprivate var contentHeight: CGFloat = 0.0
+  fileprivate var cachedAttributes = [UserCollectionViewLayoutAttributes]()
   
   @IBInspectable weak var delegate: UserCollectionViewLayoutDelegate!
   
-  private var numberOfItemsInSection: Int {
-    return collectionView?.numberOfItemsInSection(0) ?? 0
+  fileprivate var numberOfItemsInSection: Int {
+    return collectionView?.numberOfItems(inSection: 0) ?? 0
   }
   
-  private var contentWidth: CGFloat {
-    return CGRectGetWidth(collectionView?.bounds ?? CGRectZero)
+  fileprivate var contentWidth: CGFloat {
+    return (collectionView?.bounds ?? CGRect.zero).width
   }
   
-  private var itemWidth: CGFloat {
+  fileprivate var itemWidth: CGFloat {
     return contentWidth / CGFloat(numberOfItemsInRow)
   }
   
-  override func collectionViewContentSize() -> CGSize {
+  override var collectionViewContentSize : CGSize {
     return CGSize(width: contentWidth, height: contentHeight)
   }
   
-  override class func layoutAttributesClass() -> AnyClass {
+  override class var layoutAttributesClass : AnyClass {
     return UserCollectionViewLayoutAttributes.self
   }
 
-  override func prepareLayout() {
+  override func prepare() {
     if cachedAttributes.isEmpty {
       
       let xOffsets = (0..<numberOfItemsInRow).map { (index) -> CGFloat in
         return CGFloat(index) * itemWidth
       }
       
-      var yOffsets = Array(count: numberOfItemsInRow, repeatedValue: CGFloat(0))
+      var yOffsets = Array(repeating: CGFloat(0), count: numberOfItemsInRow)
       var column = 0
       
       for item in 0..<numberOfItemsInSection {
-        let indexPath = NSIndexPath(forItem: item, inSection: 0)
+        let indexPath = IndexPath(item: item, section: 0)
         let attributes = UserCollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
 
         let height = delegate!.collectionView(collectionView!, layout: self, heightForUserAtIndexPath: indexPath)
@@ -111,13 +111,13 @@ class UserCollectionViewLayout: UICollectionViewLayout {
         yOffsets[column] = yOffsets[column] + yOffset
         
         column = (column >= numberOfItemsInRow - 1) ? 0 : column + 1
-        contentHeight = max(contentHeight, CGRectGetMaxY(frame))
+        contentHeight = max(contentHeight, frame.maxY)
       }
     }
   }
   
-  override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-    if let attributes = super.initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath) {
+  override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    if let attributes = super.initialLayoutAttributesForAppearingItem(at: itemIndexPath) {
       if let animatingIndexPath = animatingIndexPath where itemIndexPath == animatingIndexPath {
         attributes.frame.size.height = delegate!.collectionView(collectionView!, layout: self, heightForUserAtIndexPath: itemIndexPath)
       }
@@ -132,13 +132,13 @@ class UserCollectionViewLayout: UICollectionViewLayout {
     super.invalidateLayout()
   }
   
-  override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+  override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
     return cachedAttributes.filter { (attribute) -> Bool in
-      return CGRectIntersectsRect(rect, attribute.frame)
+      return rect.intersects(attribute.frame)
     }
   }
   
-  override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+  override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     return cachedAttributes.filter { (attribute) -> Bool in
       return attribute.indexPath == indexPath
     }.first

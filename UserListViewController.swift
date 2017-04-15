@@ -22,18 +22,18 @@ class UserListViewController: UICollectionViewController {
     return users
   }()
   
-  let colors: [UIColor] = [.redColor(), .greenColor(), .yellowColor(), .blueColor(),
-    .orangeColor(), .redColor(), .greenColor(), .yellowColor()]
+  let colors: [UIColor] = [.red, .green, .yellow, .blue,
+    .orange, .red, .green, .yellow]
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
     title = "Users"
     
-    view.backgroundColor = .whiteColor()
-    edgesForExtendedLayout = .None
+    view.backgroundColor = .white
+    edgesForExtendedLayout = UIRectEdge()
     
-    collectionView!.registerNib(UINib(nibName: "UserCollectionViewCell", bundle: nil),
+    collectionView!.register(UINib(nibName: "UserCollectionViewCell", bundle: nil),
       forCellWithReuseIdentifier: reuseIdentifier)
     
     let layout = collectionView!.collectionViewLayout as! UserCollectionViewLayout
@@ -43,21 +43,21 @@ class UserListViewController: UICollectionViewController {
   
   // MARK: UICollectionViewDataSource
   
-  override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+  override func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
   }
 
-  override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return dataSource.count
   }
   
   override func collectionView(
-    collectionView: UICollectionView,
-    cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
-        reuseIdentifier,
-        forIndexPath: indexPath) as! UserCollectionViewCell
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: reuseIdentifier,
+        for: indexPath) as! UserCollectionViewCell
       
       cell.user = dataSource[indexPath.item]
       cell.backgroundColor = colors[indexPath.item]
@@ -66,7 +66,7 @@ class UserListViewController: UICollectionViewController {
       return cell
   }
   
-  override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     
     let layout = collectionView.collectionViewLayout as! UserCollectionViewLayout
     layout.animatingIndexPath = indexPath
@@ -81,9 +81,9 @@ class UserListViewController: UICollectionViewController {
 extension UserListViewController: UserCollectionViewLayoutDelegate {
   
   func collectionView(
-    collectionView: UICollectionView,
+    _ collectionView: UICollectionView,
     layout userCollectionViewLayout: UserCollectionViewLayout,
-    heightForUserAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    heightForUserAtIndexPath indexPath: IndexPath) -> CGFloat {
     
       return 150.0
   }
@@ -91,13 +91,16 @@ extension UserListViewController: UserCollectionViewLayoutDelegate {
 
 extension UserListViewController: UserCollectionViewCellDelegate {
 
-  func cell(cell: UserCollectionViewCell, detailButtonTapped button: UIButton) {
-    if let indexPath = collectionView?.indexPathForCell(cell) {
+  func cell(_ cell: UserCollectionViewCell, detailButtonTapped button: UIButton) {
+    if let indexPath = collectionView?.indexPath(for: cell) {
       
-      let userViewController = UserViewController()
-      userViewController.user = dataSource[indexPath.item]
-
-      self.navigationController?.pushViewController(userViewController, animated: true)
+      let layout = collectionView?.collectionViewLayout as! UserCollectionViewLayout
+      layout.animatingIndexPath = indexPath
+      
+      self.collectionView!.performBatchUpdates({ () -> Void in
+        layout.invalidateLayout()
+        self.collectionView!.setCollectionViewLayout(layout, animated: true)
+        }, completion: nil)
     }
   }
 }

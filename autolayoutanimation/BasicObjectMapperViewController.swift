@@ -9,10 +9,10 @@
 import UIKit
 import ObjectMapper
 
-public func readJSONFile(resource: String) -> String? {
-  let filePath = NSBundle.mainBundle().pathForResource(resource, ofType: "json")
+public func readJSONFile(_ resource: String) -> String? {
+  let filePath = Bundle.main.path(forResource: resource, ofType: "json")
   do {
-    let content = try NSString(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
+    let content = try NSString(contentsOfFile: filePath!, encoding: String.Encoding.utf8)
     return String(content)
   } catch {
     return nil
@@ -21,9 +21,9 @@ public func readJSONFile(resource: String) -> String? {
 
 class BasicObjectMapperViewController: UIViewController {
 
-  @IBOutlet private weak var objectLabel: UILabel!
-  @IBOutlet private weak var stringLabel: UILabel!
-  @IBOutlet private weak var dictLabel: UILabel!
+  @IBOutlet fileprivate weak var objectLabel: UILabel!
+  @IBOutlet fileprivate weak var stringLabel: UILabel!
+  @IBOutlet fileprivate weak var dictLabel: UILabel!
  
   convenience init() {
     self.init(nibName: "BasicObjectMapperViewController", bundle: nil)
@@ -32,12 +32,12 @@ class BasicObjectMapperViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .whiteColor()
-    edgesForExtendedLayout = .None
+    view.backgroundColor = .white
+    edgesForExtendedLayout = UIRectEdge()
     title = "Object Mapper"
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     let person = Mapper<Person>().map(readJSONFile("Person"))!
@@ -79,7 +79,7 @@ class Person: CustomStringConvertible, Mappable {
     //self.init(name: nil, surname: nil, ssn: nil, weight: nil, height: nil)
   }
   
-  func mapping(map: Map) {
+  func mapping(_ map: Map) {
     name <- map["name"]
     surname <- map["surname"]
     ssn <- map["ssn"]

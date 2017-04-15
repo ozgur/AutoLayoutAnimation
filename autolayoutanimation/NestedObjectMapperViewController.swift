@@ -16,20 +16,20 @@ extension Mapper {
 
 class NestedObjectMapperViewController: UIViewController {
   
-  @IBOutlet private weak var imageView: UIImageView!
+  @IBOutlet fileprivate weak var imageView: UIImageView!
 
   convenience init() {
-    self.init(nibName: "NestedObjectMapperViewController", bundle: NSBundle.mainBundle())
+    self.init(nibName: "NestedObjectMapperViewController", bundle: Bundle.main)
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .whiteColor()
-    edgesForExtendedLayout = .None
+    view.backgroundColor = .white
+    edgesForExtendedLayout = UIRectEdge()
     title = "Nesting Objects"
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     let city = Mapper<City>().map(readJSONFile("City"))
@@ -41,20 +41,20 @@ class ZipcodeTransform: TransformType {
   typealias Object = [String]
   typealias JSON = String
 
-  func transformFromJSON(value: AnyObject?) -> [String]? {
+  func transformFromJSON(_ value: AnyObject?) -> [String]? {
     if let value = value as? String {
-      return value.componentsSeparatedByString(",").map { value in
-        return value.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      return value.components(separatedBy: ",").map { value in
+        return value.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
       }
     }
     return nil
   }
   
-  func transformToJSON(value: [String]?) -> String? {
+  func transformToJSON(_ value: [String]?) -> String? {
     guard let value = value else {
       return nil
     }
-    return value.joinWithSeparator(",")
+    return value.joined(separator: ",")
   }
 }
 
@@ -73,7 +73,7 @@ class City: Mappable {
     
   }
   
-  func mapping(map: Map) {
+  func mapping(_ map: Map) {
     name <- map["name"]
     state <- map["state"]
     population <- map["population"]
@@ -109,7 +109,7 @@ class CityGovernment: CustomStringConvertible, Mappable {
     
   }
   
-  func mapping(map: Map) {
+  func mapping(_ map: Map) {
     type <- map["type"]
     mayor <- map["mayor"]
     supervisors <- map["supervisors"]

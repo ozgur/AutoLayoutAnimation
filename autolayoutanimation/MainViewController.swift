@@ -14,10 +14,10 @@ class MainViewController: UITableViewController {
   let v: CGFloat = 5
   
   let refreshView: UIView = {
-    let view = UIView(frame: CGRectZero)
+    let view = UIView(frame: CGRect.zero)
     view.translatesAutoresizingMaskIntoConstraints = false
     
-    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     view.addSubview(activityIndicatorView)
     
     activityIndicatorView.hidesWhenStopped = false
@@ -40,7 +40,8 @@ class MainViewController: UITableViewController {
     [
       "Animating Height",
       "Animating Transform Matrix",
-      "Core Animation"
+      "Core Animation",
+      "Custom Animation"
     ],
     [
       "Basics",
@@ -62,11 +63,11 @@ class MainViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
         
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "CellIdentifier")
-    tableView.tableFooterView = UIView(frame: CGRectZero)
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellIdentifier")
+    tableView.tableFooterView = UIView(frame: CGRect.zero)
     tableView.addSubview(refreshView)
     
-    tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))
+    tableView.cellForRow(at: IndexPath(row: 1, section: 0))
     
     constrain(tableView, v2: refreshView) { tableView, refreshView in
       refreshView.height == 80.0
@@ -76,39 +77,39 @@ class MainViewController: UITableViewController {
     }
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated);
   }
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return copies.count
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return copies[section].count
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier", forIndexPath: indexPath)
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath)
 
-    cell.backgroundColor = UIColor.clearColor()
+    cell.backgroundColor = UIColor.clear
     cell.textLabel?.text = copies[indexPath.section][indexPath.row]
 
     return cell
   }
   
-  override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return titles[section]
   }
 
-  override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 35.0
   }
   
   // MARK: UITableViewDelegate methods
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
     
     switch indexPath.section {
     case 0:
@@ -121,7 +122,7 @@ class MainViewController: UITableViewController {
     case 1:
       switch indexPath.row {
       case 0:
-        self.presentViewController(CAScrollViewController(), animated: true, completion: nil)
+        self.present(CAScrollViewController(), animated: true, completion: nil)
       case 1:
         self.navigationController?.pushViewController(CAReplicatorViewController(), animated: true)
       default:
@@ -135,6 +136,10 @@ class MainViewController: UITableViewController {
         navigationController?.pushViewController(TransformViewController(), animated: true)
       case 2:
         navigationController?.pushViewController(CoreAnimationViewController(), animated: true)
+      case 3:
+        navigationController?.pushViewController(
+          PetsViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil),
+          animated: true)
       default:
         break
       }

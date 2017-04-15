@@ -12,7 +12,7 @@ class UserViewController: UITableViewController {
   
   var user: User!
   
-  private static let CellIdentifier = "UserCell"
+  fileprivate static let CellIdentifier = "UserCell"
   
   var info = [String]() {
     didSet {
@@ -27,16 +27,16 @@ class UserViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .whiteColor()
-    edgesForExtendedLayout = .None
+    view.backgroundColor = .white
+    edgesForExtendedLayout = UIRectEdge()
     
-    tableView.tableFooterView = UIView(frame: CGRectZero)
-    tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: UserViewController.CellIdentifier)
+    tableView.tableFooterView = UIView(frame: CGRect.zero)
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: UserViewController.CellIdentifier)
     
     title = user.firstName
   }
   
-  override func viewWillAppear(animated: Bool) {
+  override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
     execute(delay: 2.0, repeating: false) {
@@ -46,24 +46,24 @@ class UserViewController: UITableViewController {
   
   // MARK: - Table view data source
   
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return info.count
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(UserViewController.CellIdentifier)!
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: UserViewController.CellIdentifier)!
     
     cell.textLabel?.text = info[indexPath.row]
-    cell.selectionStyle = .Gray
+    cell.selectionStyle = .gray
     
     return cell
   }
   
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
   }
 }

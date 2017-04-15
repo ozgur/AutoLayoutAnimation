@@ -10,21 +10,21 @@ import UIKit
 
 class FlipPresentAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
 
-  var originFrame = CGRectZero
+  var originFrame = CGRect.zero
   
-  func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+  func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
     return 1.0
   }
 
-  func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-    guard let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),
-          let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey),
-          let containerView = transitionContext.containerView()
+  func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    guard let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
+          let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
+          let containerView = transitionContext.containerView
     else {
       return
     }
     
-    let snapshotView = toViewController.view.snapshotViewAfterScreenUpdates(true)
+    let snapshotView = toViewController.view.snapshotView(afterScreenUpdates: true)
     snapshotView.frame = originFrame
     
     snapshotView.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI_2), 0, 1, 0)
@@ -38,18 +38,18 @@ class FlipPresentAnimationController: NSObject, UIViewControllerAnimatedTransiti
     transform.m34 = -0.002
     containerView.layer.sublayerTransform = transform
     
-    toViewController.view.hidden = true
+    toViewController.view.isHidden = true
     
-    let finalFrame = transitionContext.finalFrameForViewController(toViewController)
-    let duration = self.transitionDuration(transitionContext)
+    let finalFrame = transitionContext.finalFrame(for: toViewController)
+    let duration = self.transitionDuration(using: transitionContext)
     
-    UIView.animateKeyframesWithDuration(
-      duration,
+    UIView.animateKeyframes(
+      withDuration: duration,
       delay: 0,
-      options: .CalculationModeCubic,
+      options: .calculationModeCubic,
       animations: {
 
-        UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 1/3) {
+        UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1/3) {
           fromViewController.view.layer.transform = CATransform3DMakeRotation(CGFloat(-M_PI_2), 0, 1, 0)
         }
         
@@ -64,8 +64,8 @@ class FlipPresentAnimationController: NSObject, UIViewControllerAnimatedTransiti
       completion: { _ in
         snapshotView.removeFromSuperview()
         fromViewController.view.layer.transform = CATransform3DIdentity
-        toViewController.view.hidden = false
-        transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+        toViewController.view.isHidden = false
+        transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
     })
   }
 }

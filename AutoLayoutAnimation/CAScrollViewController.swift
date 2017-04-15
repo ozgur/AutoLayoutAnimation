@@ -11,12 +11,12 @@ import UIKit
 
 class CAScrollViewController: UIViewController {
   
-  private static let trainImage: UIImage! = UIImage(named: "train-invasivecode")
-  private static let skyImage: UIImage! = UIImage(named: "sky-invasivecode")
+  fileprivate static let trainImage: UIImage! = UIImage(named: "train-invasivecode")
+  fileprivate static let skyImage: UIImage! = UIImage(named: "sky-invasivecode")
   
   lazy var view2: UIView = { [unowned self] in
-    let view2 = UIView(frame: CGRectZero)
-    view2.backgroundColor = .whiteColor()
+    let view2 = UIView(frame: CGRect.zero)
+    view2.backgroundColor = .white
     
     let label = UILabel()
     label.text = self.name
@@ -34,7 +34,7 @@ class CAScrollViewController: UIViewController {
     layer.bounds = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.size.width, height:self.view.bounds.size.height) // 9
     layer.position = CGPoint(x: self.view.bounds.size.width/2, y: self.view.bounds.size.height/2) // 10
 
-    layer.borderColor = UIColor.blackColor().CGColor
+    layer.borderColor = UIColor.black.cgColor
     layer.borderWidth = 5.0
     layer.scrollMode = kCAScrollHorizontally
 
@@ -53,8 +53,8 @@ class CAScrollViewController: UIViewController {
     let layer = CALayer()
     let image: UIImage! = UIImage(named: "train-invasivecode")
 
-    layer.bounds = CGRect(origin: CGPointZero, size: image.size)
-    layer.contents = image.CGImage
+    layer.bounds = CGRect(origin: CGPoint.zero, size: image.size)
+    layer.contents = image.cgImage
     layer.position = CGPoint(x: image.size.width / 2.0, y: image.size.height / 2.0)
     
     return layer
@@ -64,8 +64,8 @@ class CAScrollViewController: UIViewController {
     let layer = CALayer()
     let image: UIImage! = UIImage(named: "sky-invasivecode")
     
-    layer.bounds = CGRect(origin: CGPointZero, size: image.size)
-    layer.contents = image.CGImage
+    layer.bounds = CGRect(origin: CGPoint.zero, size: image.size)
+    layer.contents = image.cgImage
     layer.position = CGPoint(x: image.size.width / 2.0, y: image.size.height / 2.0)
     
     return layer
@@ -81,8 +81,8 @@ class CAScrollViewController: UIViewController {
     
     title = "Train"
     
-    edgesForExtendedLayout = .None
-    view.backgroundColor = UIColor.whiteColor()
+    edgesForExtendedLayout = UIRectEdge()
+    view.backgroundColor = UIColor.white
 
     scrollLayer.addSublayer(skyLayer)
     view.layer.addSublayer(scrollLayer)
@@ -97,19 +97,19 @@ class CAScrollViewController: UIViewController {
   }
   
   func scrollLayerScroll() {
-    scrollLayer.scrollPoint(CGPoint(x: skyTranslation, y: 0.0))
+    scrollLayer.scroll(CGPoint(x: skyTranslation, y: 0.0))
     
     if skyTranslation >= skyLayer.bounds.width {
-      scrollLayer.scrollPoint(CGPointZero)
+      scrollLayer.scroll(CGPoint.zero)
       skyTranslation = 0
     }
     skyTranslation = skyTranslation + 10
     
     if (moveUp != false) {
-      scrollLayerTop.scrollToPoint(CGPoint(x: 0.0, y: 10.0))
+      scrollLayerTop.scroll(to: CGPoint(x: 0.0, y: 10.0))
       moveUp = false
     } else {
-      scrollLayerTop.scrollToPoint(CGPoint(x: 0.0, y: -10.0))
+      scrollLayerTop.scroll(to: CGPoint(x: 0.0, y: -10.0))
       moveUp = true
     }
     
@@ -124,14 +124,14 @@ class CAScrollViewController: UIViewController {
     */
   }
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     animator.invalidate()
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    animator.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
+    animator.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
   }
   
   deinit {

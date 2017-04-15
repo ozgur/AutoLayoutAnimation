@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		155EB9C21775E0B5BA9F4D6F /* Pods_AutoLayoutAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0248B764D0A9E8B46C4A153D /* Pods_AutoLayoutAnimation.framework */; };
 		2E0C69661BD6EF8B00365324 /* BasicObjectMapperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0C69641BD6EF8B00365324 /* BasicObjectMapperViewController.swift */; };
 		2E0C69671BD6EF8B00365324 /* BasicObjectMapperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E0C69651BD6EF8B00365324 /* BasicObjectMapperViewController.xib */; };
 		2E0C696B1BD6FBA200365324 /* Person.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E0C696A1BD6FBA200365324 /* Person.json */; };
@@ -37,6 +36,11 @@
 		2E4ED14A1BDEB1C7005730BD /* UserCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4ED1491BDEB1C7005730BD /* UserCollectionViewLayout.swift */; };
 		2E4ED14F1BDED1B7005730BD /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4ED14D1BDED1B7005730BD /* UserCollectionViewCell.swift */; };
 		2E4ED1501BDED1B7005730BD /* UserCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4ED14E1BDED1B7005730BD /* UserCollectionViewCell.xib */; };
+		2E5397371C9B4CD0001D3FE2 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5397361C9B4CD0001D3FE2 /* Array+Additions.swift */; };
+		2E53973A1C9B575C001D3FE2 /* PetInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5397381C9B575C001D3FE2 /* PetInfoViewController.swift */; };
+		2E53973B1C9B575C001D3FE2 /* PetInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E5397391C9B575C001D3FE2 /* PetInfoViewController.xib */; };
+		2E53973D1C9B7093001D3FE2 /* FlipDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53973C1C9B7093001D3FE2 /* FlipDismissAnimationController.swift */; };
+		2E53973F1C9B7F2D001D3FE2 /* FlipInteractiveAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E53973E1C9B7F2D001D3FE2 /* FlipInteractiveAnimationController.swift */; };
 		2E8E48901BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E488E1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift */; };
 		2E8E48911BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E8E488F1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib */; };
 		2E9732291BDDCFD4007FA27C /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9732281BDDCFD4007FA27C /* UserDataSource.swift */; };
@@ -45,6 +49,13 @@
 		2EAC24C11BE00F0D006FB1C5 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC24BF1BE00F0D006FB1C5 /* UserViewController.swift */; };
 		2EAC24C21BE00F0D006FB1C5 /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EAC24C01BE00F0D006FB1C5 /* UserViewController.xib */; };
 		2EAC24C41BE0164C006FB1C5 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAC24C31BE0164C006FB1C5 /* UserDataManager.swift */; };
+		2EB21CF51C9B46DD009DDE43 /* Pets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2EB21CF31C9B46DD009DDE43 /* Pets.plist */; };
+		2EB21CF61C9B46DD009DDE43 /* PetCardStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21CF41C9B46DD009DDE43 /* PetCardStore.swift */; };
+		2EB21CF91C9B477F009DDE43 /* FlipPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21CF81C9B477F009DDE43 /* FlipPresentAnimationController.swift */; };
+		2EB21D011C9B4837009DDE43 /* PetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21CFF1C9B4837009DDE43 /* PetsViewController.swift */; };
+		2EB21D051C9B48E6009DDE43 /* PetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21D031C9B48E6009DDE43 /* PetViewController.swift */; };
+		2EB21D061C9B48E6009DDE43 /* PetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EB21D041C9B48E6009DDE43 /* PetViewController.xib */; };
+		2EB21D081C9B4AE1009DDE43 /* PetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB21D071C9B4AE1009DDE43 /* PetCard.swift */; };
 		2EB333B51BE2BB74001827B5 /* CoreAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB333B41BE2BB74001827B5 /* CoreAnimationViewController.swift */; };
 		2EBD6FF01BD55D0F007351D1 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD6FEF1BD55D0F007351D1 /* AlamofireViewController.swift */; };
 		2EBD6FF21BD566A2007351D1 /* AlamofireViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD6FF11BD566A2007351D1 /* AlamofireViewController.xib */; };
@@ -59,7 +70,8 @@
 		2EBD70091BD5B4D2007351D1 /* AlamofireXMLViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD70071BD5B4D2007351D1 /* AlamofireXMLViewController.xib */; };
 		2EBE65651BD1859F004ABC5D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE65641BD1859F004ABC5D /* MainViewController.swift */; };
 		2EBE65671BD1891C004ABC5D /* TransformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE65661BD1891C004ABC5D /* TransformViewController.swift */; };
-		3F9F9287E3ECAA914B40E513 /* Pods_AutoLayoutAnimationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5AAE5144B7EF88523771BE7 /* Pods_AutoLayoutAnimationTests.framework */; };
+		D05B220892816497B5A3732A /* Pods_AutoLayoutAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4603D01ECADF73DEBFD50BC5 /* Pods_AutoLayoutAnimation.framework */; };
+		E70C4F659111304707A7A63A /* Pods_AutoLayoutAnimationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7EDBA6DF89899C7FDB27C2D /* Pods_AutoLayoutAnimationTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +85,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0248B764D0A9E8B46C4A153D /* Pods_AutoLayoutAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoLayoutAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E0C69641BD6EF8B00365324 /* BasicObjectMapperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicObjectMapperViewController.swift; sourceTree = "<group>"; };
 		2E0C69651BD6EF8B00365324 /* BasicObjectMapperViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BasicObjectMapperViewController.xib; sourceTree = "<group>"; };
 		2E0C696A1BD6FBA200365324 /* Person.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Person.json; sourceTree = "<group>"; };
@@ -110,6 +121,11 @@
 		2E4ED1491BDEB1C7005730BD /* UserCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewLayout.swift; sourceTree = "<group>"; };
 		2E4ED14D1BDED1B7005730BD /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		2E4ED14E1BDED1B7005730BD /* UserCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCell.xib; sourceTree = "<group>"; };
+		2E5397361C9B4CD0001D3FE2 /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
+		2E5397381C9B575C001D3FE2 /* PetInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetInfoViewController.swift; path = autolayoutanimation/PetInfoViewController.swift; sourceTree = SOURCE_ROOT; };
+		2E5397391C9B575C001D3FE2 /* PetInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PetInfoViewController.xib; path = autolayoutanimation/PetInfoViewController.xib; sourceTree = SOURCE_ROOT; };
+		2E53973C1C9B7093001D3FE2 /* FlipDismissAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlipDismissAnimationController.swift; path = autolayoutanimation/FlipDismissAnimationController.swift; sourceTree = SOURCE_ROOT; };
+		2E53973E1C9B7F2D001D3FE2 /* FlipInteractiveAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlipInteractiveAnimationController.swift; path = autolayoutanimation/FlipInteractiveAnimationController.swift; sourceTree = SOURCE_ROOT; };
 		2E8E488E1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireSerializeViewController.swift; sourceTree = "<group>"; };
 		2E8E488F1BD6AB4E003A8CD3 /* AlamofireSerializeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofireSerializeViewController.xib; sourceTree = "<group>"; };
 		2E9732281BDDCFD4007FA27C /* UserDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
@@ -121,6 +137,13 @@
 		2EAC24BF1BE00F0D006FB1C5 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		2EAC24C01BE00F0D006FB1C5 /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		2EAC24C31BE0164C006FB1C5 /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		2EB21CF31C9B46DD009DDE43 /* Pets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Pets.plist; sourceTree = "<group>"; };
+		2EB21CF41C9B46DD009DDE43 /* PetCardStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetCardStore.swift; sourceTree = "<group>"; };
+		2EB21CF81C9B477F009DDE43 /* FlipPresentAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlipPresentAnimationController.swift; path = autolayoutanimation/FlipPresentAnimationController.swift; sourceTree = SOURCE_ROOT; };
+		2EB21CFF1C9B4837009DDE43 /* PetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetsViewController.swift; path = autolayoutanimation/PetsViewController.swift; sourceTree = SOURCE_ROOT; };
+		2EB21D031C9B48E6009DDE43 /* PetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PetViewController.swift; path = autolayoutanimation/PetViewController.swift; sourceTree = SOURCE_ROOT; };
+		2EB21D041C9B48E6009DDE43 /* PetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PetViewController.xib; path = autolayoutanimation/PetViewController.xib; sourceTree = SOURCE_ROOT; };
+		2EB21D071C9B4AE1009DDE43 /* PetCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetCard.swift; sourceTree = "<group>"; };
 		2EB333B41BE2BB74001827B5 /* CoreAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreAnimationViewController.swift; path = autolayoutanimation/CoreAnimationViewController.swift; sourceTree = SOURCE_ROOT; };
 		2EBD6FEF1BD55D0F007351D1 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
 		2EBD6FF11BD566A2007351D1 /* AlamofireViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofireViewController.xib; sourceTree = "<group>"; };
@@ -135,11 +158,12 @@
 		2EBD70071BD5B4D2007351D1 /* AlamofireXMLViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlamofireXMLViewController.xib; sourceTree = "<group>"; };
 		2EBE65641BD1859F004ABC5D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2EBE65661BD1891C004ABC5D /* TransformViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformViewController.swift; sourceTree = "<group>"; };
-		4999F4007730AD5E88EC7AB6 /* Pods-AutoLayoutAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutAnimation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutAnimation/Pods-AutoLayoutAnimation.debug.xcconfig"; sourceTree = "<group>"; };
-		56DFF9189E4E12F9AC6EA233 /* Pods-AutoLayoutAnimationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutAnimationTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutAnimationTests/Pods-AutoLayoutAnimationTests.release.xcconfig"; sourceTree = "<group>"; };
-		6B2EAEC79CD9FEE6C63B9C13 /* Pods-AutoLayoutAnimationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutAnimationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutAnimationTests/Pods-AutoLayoutAnimationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A3BE0A9A46C1CC727B8338EA /* Pods-AutoLayoutAnimation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutAnimation.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutAnimation/Pods-AutoLayoutAnimation.release.xcconfig"; sourceTree = "<group>"; };
-		C5AAE5144B7EF88523771BE7 /* Pods_AutoLayoutAnimationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoLayoutAnimationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		460061F71661F15D6E3785C0 /* Pods-AutoLayoutAnimationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutAnimationTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutAnimationTests/Pods-AutoLayoutAnimationTests.release.xcconfig"; sourceTree = "<group>"; };
+		4603D01ECADF73DEBFD50BC5 /* Pods_AutoLayoutAnimation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoLayoutAnimation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D5CA6DB5D628616AE451A67 /* Pods-AutoLayoutAnimation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutAnimation.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutAnimation/Pods-AutoLayoutAnimation.release.xcconfig"; sourceTree = "<group>"; };
+		79235AC699ED1B630C082745 /* Pods-AutoLayoutAnimationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutAnimationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutAnimationTests/Pods-AutoLayoutAnimationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A7EDBA6DF89899C7FDB27C2D /* Pods_AutoLayoutAnimationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoLayoutAnimationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B069B958D60EAA528AC61B3A /* Pods-AutoLayoutAnimation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoLayoutAnimation.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoLayoutAnimation/Pods-AutoLayoutAnimation.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				155EB9C21775E0B5BA9F4D6F /* Pods_AutoLayoutAnimation.framework in Frameworks */,
+				D05B220892816497B5A3732A /* Pods_AutoLayoutAnimation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F9F9287E3ECAA914B40E513 /* Pods_AutoLayoutAnimationTests.framework in Frameworks */,
+				E70C4F659111304707A7A63A /* Pods_AutoLayoutAnimationTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,9 +214,9 @@
 				2E126C6E1BCF03DD00A99F3C /* AutoLayoutAnimation */,
 				2E9732311BDDDB97007FA27C /* AutoLayoutAnimationTests */,
 				2E126C6D1BCF03DD00A99F3C /* Products */,
-				728E524E266BA379DE984DD8 /* Pods */,
-				83468D6CA8782D6EA5773263 /* Frameworks */,
 				2E0E9A5C1BF2F5AD00A496B7 /* Scripts */,
+				EEBFF8AC7E5703DD19E82692 /* Pods */,
+				DDC62709283B1FE77BD42F0D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -278,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				2E1F3F781BE827AD0045F3EF /* String+Additions.swift */,
+				2E5397361C9B4CD0001D3FE2 /* Array+Additions.swift */,
 			);
 			name = Swift;
 			sourceTree = "<group>";
@@ -335,6 +360,7 @@
 		2E8E48931BD6BD52003A8CD3 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				2EB21CF11C9B46C5009DDE43 /* Custom */,
 				2E126C711BCF03DD00A99F3C /* BoxViewController.swift */,
 				2E2A148C1BF12B7000172CA1 /* BoxViewController.xib */,
 				2EBE65661BD1891C004ABC5D /* TransformViewController.swift */,
@@ -378,24 +404,66 @@
 			name = User;
 			sourceTree = "<group>";
 		};
-		728E524E266BA379DE984DD8 /* Pods */ = {
+		2EB21CF11C9B46C5009DDE43 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				4999F4007730AD5E88EC7AB6 /* Pods-AutoLayoutAnimation.debug.xcconfig */,
-				A3BE0A9A46C1CC727B8338EA /* Pods-AutoLayoutAnimation.release.xcconfig */,
-				6B2EAEC79CD9FEE6C63B9C13 /* Pods-AutoLayoutAnimationTests.debug.xcconfig */,
-				56DFF9189E4E12F9AC6EA233 /* Pods-AutoLayoutAnimationTests.release.xcconfig */,
+				2EB21CFA1C9B479D009DDE43 /* View Controllers */,
+				2EB21CF71C9B4756009DDE43 /* Animation Controllers */,
+				2EB21CF21C9B46D6009DDE43 /* Data */,
 			);
-			name = Pods;
+			name = Custom;
 			sourceTree = "<group>";
 		};
-		83468D6CA8782D6EA5773263 /* Frameworks */ = {
+		2EB21CF21C9B46D6009DDE43 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				0248B764D0A9E8B46C4A153D /* Pods_AutoLayoutAnimation.framework */,
-				C5AAE5144B7EF88523771BE7 /* Pods_AutoLayoutAnimationTests.framework */,
+				2EB21CF31C9B46DD009DDE43 /* Pets.plist */,
+				2EB21D071C9B4AE1009DDE43 /* PetCard.swift */,
+				2EB21CF41C9B46DD009DDE43 /* PetCardStore.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		2EB21CF71C9B4756009DDE43 /* Animation Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2EB21CF81C9B477F009DDE43 /* FlipPresentAnimationController.swift */,
+				2E53973C1C9B7093001D3FE2 /* FlipDismissAnimationController.swift */,
+				2E53973E1C9B7F2D001D3FE2 /* FlipInteractiveAnimationController.swift */,
+			);
+			name = "Animation Controllers";
+			sourceTree = "<group>";
+		};
+		2EB21CFA1C9B479D009DDE43 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2EB21CFF1C9B4837009DDE43 /* PetsViewController.swift */,
+				2EB21D031C9B48E6009DDE43 /* PetViewController.swift */,
+				2EB21D041C9B48E6009DDE43 /* PetViewController.xib */,
+				2E5397381C9B575C001D3FE2 /* PetInfoViewController.swift */,
+				2E5397391C9B575C001D3FE2 /* PetInfoViewController.xib */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DDC62709283B1FE77BD42F0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4603D01ECADF73DEBFD50BC5 /* Pods_AutoLayoutAnimation.framework */,
+				A7EDBA6DF89899C7FDB27C2D /* Pods_AutoLayoutAnimationTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EEBFF8AC7E5703DD19E82692 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B069B958D60EAA528AC61B3A /* Pods-AutoLayoutAnimation.debug.xcconfig */,
+				6D5CA6DB5D628616AE451A67 /* Pods-AutoLayoutAnimation.release.xcconfig */,
+				79235AC699ED1B630C082745 /* Pods-AutoLayoutAnimationTests.debug.xcconfig */,
+				460061F71661F15D6E3785C0 /* Pods-AutoLayoutAnimationTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,13 +473,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E126C7E1BCF03DD00A99F3C /* Build configuration list for PBXNativeTarget "AutoLayoutAnimation" */;
 			buildPhases = (
-				B210A615C4DF3A0DC2663EDB /* Check Pods Manifest.lock */,
+				CBD2CF348A4070C93695DC64 /* [CP] Check Pods Manifest.lock */,
 				2E126C681BCF03DD00A99F3C /* Sources */,
 				2E126C691BCF03DD00A99F3C /* Frameworks */,
 				2E126C6A1BCF03DD00A99F3C /* Resources */,
-				C043E5168E45D521F7F75127 /* Embed Pods Frameworks */,
-				407AB9FE8095239E9F78D129 /* Copy Pods Resources */,
 				2E68912B1BED7EA700D24FA7 /* XCS Environment Variables */,
+				91A4FD533E6181712C32371A /* [CP] Embed Pods Frameworks */,
+				7EBEC1D13139CF02E993F982 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -426,12 +494,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2E9732371BDDDB97007FA27C /* Build configuration list for PBXNativeTarget "AutoLayoutAnimationTests" */;
 			buildPhases = (
-				24CA21F67B4873E0A6994D83 /* Check Pods Manifest.lock */,
+				5FF4A011B10BC72C20D737B2 /* [CP] Check Pods Manifest.lock */,
 				2E97322C1BDDDB97007FA27C /* Sources */,
 				2E97322D1BDDDB97007FA27C /* Frameworks */,
 				2E97322E1BDDDB97007FA27C /* Resources */,
-				EAAD2AECE7415B880DA6CB52 /* Embed Pods Frameworks */,
-				1FF9C60CBACFC93628BF5300 /* Copy Pods Resources */,
+				B7D8835620EAB2F04CB38620 /* [CP] Embed Pods Frameworks */,
+				B09D2E9E9A484D1455C8B096 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -456,9 +524,11 @@
 				TargetAttributes = {
 					2E126C6B1BCF03DD00A99F3C = {
 						CreatedOnToolsVersion = 7.0.1;
+						LastSwiftMigration = 0830;
 					};
 					2E97322F1BDDDB97007FA27C = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 2E126C6B1BCF03DD00A99F3C;
 					};
 				};
@@ -490,6 +560,7 @@
 				2EBD6FFD1BD5861E007351D1 /* image.jpg in Resources */,
 				2EAC24C21BE00F0D006FB1C5 /* UserViewController.xib in Resources */,
 				2E126C7A1BCF03DD00A99F3C /* LaunchScreen.storyboard in Resources */,
+				2EB21CF51C9B46DD009DDE43 /* Pets.plist in Resources */,
 				2E0C696F1BD70DC100365324 /* NestedObjectMapperViewController.xib in Resources */,
 				2EBD6FF61BD5805A007351D1 /* AlamofirePostViewController.xib in Resources */,
 				2E126C771BCF03DD00A99F3C /* Assets.xcassets in Resources */,
@@ -500,7 +571,9 @@
 				2E0C696B1BD6FBA200365324 /* Person.json in Resources */,
 				2E126C751BCF03DD00A99F3C /* Main.storyboard in Resources */,
 				2E0C69671BD6EF8B00365324 /* BasicObjectMapperViewController.xib in Resources */,
+				2EB21D061C9B48E6009DDE43 /* PetViewController.xib in Resources */,
 				2EBD6FF21BD566A2007351D1 /* AlamofireViewController.xib in Resources */,
+				2E53973B1C9B575C001D3FE2 /* PetInfoViewController.xib in Resources */,
 				2E2A148D1BF12B7000172CA1 /* BoxViewController.xib in Resources */,
 				2E4ED1481BDEA764005730BD /* UserListViewController.xib in Resources */,
 				2E0E9A5D1BF2F5AD00A496B7 /* Scripts in Resources */,
@@ -522,36 +595,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1FF9C60CBACFC93628BF5300 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutAnimationTests/Pods-AutoLayoutAnimationTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		24CA21F67B4873E0A6994D83 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		2E68912B1BED7EA700D24FA7 /* XCS Environment Variables */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -566,14 +609,29 @@
 			shellPath = /bin/sh;
 			shellScript = "appVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\")\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\")\n\"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}/Scripts/XcodeServer/dump_env_variables.py\" \".xcsenv\" \"$appVersion\" \"$buildNumber\"";
 		};
-		407AB9FE8095239E9F78D129 /* Copy Pods Resources */ = {
+		5FF4A011B10BC72C20D737B2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7EBEC1D13139CF02E993F982 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,29 +639,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutAnimation/Pods-AutoLayoutAnimation-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B210A615C4DF3A0DC2663EDB /* Check Pods Manifest.lock */ = {
+		91A4FD533E6181712C32371A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C043E5168E45D521F7F75127 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,19 +654,49 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutAnimation/Pods-AutoLayoutAnimation-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EAAD2AECE7415B880DA6CB52 /* Embed Pods Frameworks */ = {
+		B09D2E9E9A484D1455C8B096 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutAnimationTests/Pods-AutoLayoutAnimationTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7D8835620EAB2F04CB38620 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoLayoutAnimationTests/Pods-AutoLayoutAnimationTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBD2CF348A4070C93695DC64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -633,27 +706,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E53973F1C9B7F2D001D3FE2 /* FlipInteractiveAnimationController.swift in Sources */,
 				2EBD6FF01BD55D0F007351D1 /* AlamofireViewController.swift in Sources */,
 				2EBD70081BD5B4D2007351D1 /* AlamofireXMLViewController.swift in Sources */,
 				2E2A14FC1BF1760500172CA1 /* CAScrollViewController.swift in Sources */,
 				2EAC24C41BE0164C006FB1C5 /* UserDataManager.swift in Sources */,
 				2E4ED14A1BDEB1C7005730BD /* UserCollectionViewLayout.swift in Sources */,
+				2E53973D1C9B7093001D3FE2 /* FlipDismissAnimationController.swift in Sources */,
 				2E2D65771BE8980800859797 /* UIViewController+Accessibility.m in Sources */,
 				2E0C69661BD6EF8B00365324 /* BasicObjectMapperViewController.swift in Sources */,
 				2E8E48901BD6AB4E003A8CD3 /* AlamofireSerializeViewController.swift in Sources */,
+				2E53973A1C9B575C001D3FE2 /* PetInfoViewController.swift in Sources */,
 				2EAC24C11BE00F0D006FB1C5 /* UserViewController.swift in Sources */,
 				2EBE65651BD1859F004ABC5D /* MainViewController.swift in Sources */,
 				2EBD70001BD5941B007351D1 /* AlamofireDownloadViewController.swift in Sources */,
+				2EB21D081C9B4AE1009DDE43 /* PetCard.swift in Sources */,
 				2E2D65801BEAD57700859797 /* UIImage+Additions.m in Sources */,
 				2EBD70041BD5A8FB007351D1 /* AlamofirePaginationViewController.swift in Sources */,
+				2EB21D051C9B48E6009DDE43 /* PetViewController.swift in Sources */,
 				2E4ED1471BDEA764005730BD /* UserListViewController.swift in Sources */,
 				2E2D657B1BEAD3E700859797 /* NSObject+Swizzler.m in Sources */,
 				2E16EC601BFE4C880053C731 /* Person.swift in Sources */,
+				2E5397371C9B4CD0001D3FE2 /* Array+Additions.swift in Sources */,
+				2EB21D011C9B4837009DDE43 /* PetsViewController.swift in Sources */,
+				2EB21CF91C9B477F009DDE43 /* FlipPresentAnimationController.swift in Sources */,
 				2E126C721BCF03DD00A99F3C /* BoxViewController.swift in Sources */,
 				2EBD6FF51BD5805A007351D1 /* AlamofirePostViewController.swift in Sources */,
 				2E1F3F791BE827AD0045F3EF /* String+Additions.swift in Sources */,
 				2E126C701BCF03DD00A99F3C /* AppDelegate.swift in Sources */,
 				2E9732291BDDCFD4007FA27C /* UserDataSource.swift in Sources */,
+				2EB21CF61C9B46DD009DDE43 /* PetCardStore.swift in Sources */,
 				2EB333B51BE2BB74001827B5 /* CoreAnimationViewController.swift in Sources */,
 				2E4ED14F1BDED1B7005730BD /* UserCollectionViewCell.swift in Sources */,
 				2EBE65671BD1891C004ABC5D /* TransformViewController.swift in Sources */,
@@ -785,7 +867,7 @@
 		};
 		2E126C7F1BCF03DD00A99F3C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4999F4007730AD5E88EC7AB6 /* Pods-AutoLayoutAnimation.debug.xcconfig */;
+			baseConfigurationReference = B069B958D60EAA528AC61B3A /* Pods-AutoLayoutAnimation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -799,12 +881,13 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AutoLayoutAnimation-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		2E126C801BCF03DD00A99F3C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3BE0A9A46C1CC727B8338EA /* Pods-AutoLayoutAnimation.release.xcconfig */;
+			baseConfigurationReference = 6D5CA6DB5D628616AE451A67 /* Pods-AutoLayoutAnimation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -817,12 +900,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AutoLayoutAnimation-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		2E9732381BDDDB97007FA27C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B2EAEC79CD9FEE6C63B9C13 /* Pods-AutoLayoutAnimationTests.debug.xcconfig */;
+			baseConfigurationReference = 79235AC699ED1B630C082745 /* Pods-AutoLayoutAnimationTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -833,13 +917,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoLayoutAnimation.app/AutoLayoutAnimation";
 			};
 			name = Debug;
 		};
 		2E9732391BDDDB97007FA27C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56DFF9189E4E12F9AC6EA233 /* Pods-AutoLayoutAnimationTests.release.xcconfig */;
+			baseConfigurationReference = 460061F71661F15D6E3785C0 /* Pods-AutoLayoutAnimationTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -849,6 +934,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.techshed.AutoLayoutAnimationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoLayoutAnimation.app/AutoLayoutAnimation";
 			};
 			name = Release;

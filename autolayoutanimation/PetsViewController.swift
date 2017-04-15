@@ -10,49 +10,49 @@ import UIKit
 
 class PetsViewController: UIPageViewController, UIPageViewControllerDataSource {
   
-  private let pets = PetCardStore.defaultPets()
+  fileprivate let pets = PetCardStore.defaultPets()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    edgesForExtendedLayout = .None
+    edgesForExtendedLayout = UIRectEdge()
 
     title = "Custom Animation"
-    view.backgroundColor = .blackColor()
+    view.backgroundColor = .black
     dataSource = self
     
-    self.setViewControllers([viewControllerAtIndex(0)!], direction: .Forward, animated: false, completion: nil)
+    self.setViewControllers([viewControllerAtIndex(0)!], direction: .forward, animated: false, completion: nil)
   }
   
-  func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+  func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
     
     if let viewController = viewController as? PetViewController {
-      if let index = pets.indexOf(viewController.pet) {
+      if let index = pets.index(of: viewController.pet) {
         return self.viewControllerAtIndex(index - 1)
       }
     }
     return nil
   }
   
-  func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+  func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
     
     if let viewController = viewController as? PetViewController {
-      if let index = pets.indexOf(viewController.pet) {
+      if let index = pets.index(of: viewController.pet) {
         return self.viewControllerAtIndex(index + 1)
       }
     }
     return nil
   }
   
-  func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+  func presentationCount(for pageViewController: UIPageViewController) -> Int {
     return pets.count
   }
   
-  func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+  func presentationIndex(for pageViewController: UIPageViewController) -> Int {
     return 0
   }
   
-  private func viewControllerAtIndex(index: Int) -> PetViewController? {
+  fileprivate func viewControllerAtIndex(_ index: Int) -> PetViewController? {
     if index >= 0 && index < pets.count {
       let viewController = PetViewController()
       viewController.pet = pets[index]

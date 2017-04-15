@@ -21,11 +21,11 @@ class Student: Throwable {
 public struct MPError {
   
   public enum Code: Int {
-    case InvalidHTMLError = -999
-    case ValidationError = -998
+    case invalidHTMLError = -999
+    case validationError = -998
   }
   
-  static func errorWithThrowable<T: Throwable>(throwable: T.Type, code: Code, description: String?) -> NSError {
+  static func errorWithThrowable<T: Throwable>(_ throwable: T.Type, code: Code, description: String?) -> NSError {
     let userInfo: [String: String]? = description != nil ? [NSLocalizedDescriptionKey: description!] : nil
     return NSError(domain: throwable.domain, code: code.rawValue, userInfo: userInfo)
   }

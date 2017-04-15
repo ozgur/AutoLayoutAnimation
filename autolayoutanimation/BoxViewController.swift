@@ -14,12 +14,12 @@ class BoxViewController: UIViewController {
   @IBOutlet weak var topView: UIView!
   @IBOutlet weak var bottomView: UIView!
 
-  private var constraints = ConstraintGroup()
+  fileprivate var constraints = ConstraintGroup()
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    edgesForExtendedLayout = .None
+    edgesForExtendedLayout = UIRectEdge()
     
     topView.translatesAutoresizingMaskIntoConstraints = false
     bottomView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,14 +42,14 @@ class BoxViewController: UIViewController {
     }
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     constrain(topView, v2: bottomView, v3: view, replace: constraints) { topView, bottomView, view in
       topView.bottom == bottomView.top
     }
     
-    UIView.animateWithDuration(1.0, animations: view.layoutIfNeeded)
+    UIView.animate(withDuration: 1.0, animations: view.layoutIfNeeded)
   }
 }
 

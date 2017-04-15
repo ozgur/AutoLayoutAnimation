@@ -20,14 +20,14 @@ class ImageViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    edgesForExtendedLayout = .None
-    view.backgroundColor = .whiteColor()
+    edgesForExtendedLayout = UIRectEdge()
+    view.backgroundColor = .white
     
     title = "Scaling"
     
     print("Ozgur".length)
     
-    scrollView = UIScrollView(frame: CGRectZero)
+    scrollView = UIScrollView(frame: CGRect.zero)
     view.addSubview(scrollView)
     
     constrain(scrollView, v2: view) { scrollView, view in
@@ -39,19 +39,19 @@ class ImageViewController: UIViewController {
 
     let image = UIImage(named: "sanfrancisco@3x.jpg")!
     firstImageView = UIImageView(image: image)
-    firstImageView.backgroundColor = .clearColor()
+    firstImageView.backgroundColor = .clear
 
     secondImageView = UIImageView(
-      image: UIImage(image: image, scaleAspectFitToSize: CGSize(width: 283.375, height: 201.0))
+      image: UIImage(image: image, scaleAspectFitTo: CGSize(width: 283.375, height: 201.0))
     )
-    secondImageView.contentMode = .Center
-    secondImageView.backgroundColor = .clearColor()
+    secondImageView.contentMode = .center
+    secondImageView.backgroundColor = .clear
     
     thirdImageView = UIImageView(
-      image: UIImage(image: image, scaleAspectFillToSize: CGSize(width: 283.375, height: 150.0))
+      image: UIImage(image: image, scaleAspectFillTo: CGSize(width: 283.375, height: 150.0))
     )
-    thirdImageView.contentMode = .Center
-    thirdImageView.backgroundColor = .clearColor()
+    thirdImageView.contentMode = .center
+    thirdImageView.backgroundColor = .clear
 
     scrollView.translatesAutoresizingMaskIntoConstraints = false
     firstImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,8 +80,8 @@ class ImageViewController: UIViewController {
       thirdImageView.height == 150.0
     }
     
-    textField = UITextField(frame: CGRectZero)
-    textField.borderStyle = .RoundedRect
+    textField = UITextField(frame: CGRect.zero)
+    textField.borderStyle = .roundedRect
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.text = "aaaa"
     
@@ -96,7 +96,7 @@ class ImageViewController: UIViewController {
     }
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
   }
 }

@@ -11,7 +11,7 @@ import AddressBook
 
 class UserDataSource {
   
-  private var users = [User]()
+  fileprivate var users = [User]()
   
   var count: Int {
     return users.count
@@ -21,7 +21,7 @@ class UserDataSource {
     return users[index]
   }
   
-  func addUser(user: User) -> Bool {
+  func addUser(_ user: User) -> Bool {
     if users.contains(user) {
       return false
     }
@@ -29,17 +29,17 @@ class UserDataSource {
     return true
   }
   
-  func removeUser(user: User) -> Bool {
-    guard let index = users.indexOf(user) else {
+  func removeUser(_ user: User) -> Bool {
+    guard let index = users.index(of: user) else {
       return false
     }
-    users.removeAtIndex(index)
+    users.remove(at: index)
     return true
   }
 
-  func loadUsersFromPlist(named named: String) -> [User]? {
-    let mainBundle = NSBundle.mainBundle()
-    guard let path = mainBundle.pathForResource(named, ofType: "plist"),
+  func loadUsersFromPlist(named: String) -> [User]? {
+    let mainBundle = Bundle.main
+    guard let path = mainBundle.path(forResource: named, ofType: "plist"),
       content = NSArray(contentsOfFile: path) as? [[String: String]] else {
         return nil
     }

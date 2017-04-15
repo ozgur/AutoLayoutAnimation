@@ -2,14 +2,14 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'AutoLayoutAnimation' do
-  pod 'Cartography', '~> 0.5.0'
-  pod 'Alamofire', '~> 3.1.0'
-  pod 'AlamofireImage', '~> 2.1.0'
-  pod 'AlamofireObjectMapper', '~> 2.0.0'
+  pod 'Cartography'
+  pod 'Alamofire', '~> 4.4’
+  pod 'AlamofireImage', '~> 3.1'
+  pod 'AlamofireObjectMapper', '~> 4.0’
   pod 'Ono'
 end
 
 target 'AutoLayoutAnimationTests' do
-  pod 'Quick', '~> 0.8.0'
-  pod 'Nimble', '3.0.0'
+  pod 'Quick'
+  pod 'Nimble'
 end

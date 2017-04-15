@@ -13,9 +13,9 @@ class PetViewController: UIViewController, UIViewControllerTransitioningDelegate
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subtitleLabel: UILabel!
   
-  private let flipPresentAnimationController = FlipPresentAnimationController()
-  private let flipDismissAnimationController = FlipDismissAnimationController()
-  private let flipInteractiveAnimationController = FlipInteractiveAnimationController()
+  fileprivate let flipPresentAnimationController = FlipPresentAnimationController()
+  fileprivate let flipDismissAnimationController = FlipDismissAnimationController()
+  fileprivate let flipInteractiveAnimationController = FlipInteractiveAnimationController()
   
   @IBOutlet weak var contentView: UIView!
   var pet: PetCard!
@@ -32,28 +32,28 @@ class PetViewController: UIViewController, UIViewControllerTransitioningDelegate
     contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
   }
   
-  func handleTap(gestureRecognizer: UIGestureRecognizer) {
+  func handleTap(_ gestureRecognizer: UIGestureRecognizer) {
     let viewController = PetInfoViewController()
     viewController.pet = pet
     viewController.transitioningDelegate = self
     flipInteractiveAnimationController.wireToViewController(viewController)
-    self.presentViewController(viewController, animated: true, completion: nil)
+    self.present(viewController, animated: true, completion: nil)
   }
   
-  func animationControllerForPresentedController(
-    presented: UIViewController,
-    presentingController presenting: UIViewController,
-    sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-      flipPresentAnimationController.originFrame = contentView.superview!.convertRect(contentView.frame, toView: navigationController?.view ?? contentView.superview)
+  func animationController(
+    forPresented presented: UIViewController,
+    presenting: UIViewController,
+    source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+      flipPresentAnimationController.originFrame = contentView.superview!.convert(contentView.frame, to: navigationController?.view ?? contentView.superview)
       return flipPresentAnimationController
   }
   
-  func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-    flipDismissAnimationController.destinationFrame = contentView.superview!.convertRect(contentView.frame, toView: navigationController?.view ?? contentView.superview)
+  func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    flipDismissAnimationController.destinationFrame = contentView.superview!.convert(contentView.frame, to: navigationController?.view ?? contentView.superview)
     return flipDismissAnimationController
   }
   
-  func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+  func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
     return flipInteractiveAnimationController.inProgress ? flipInteractiveAnimationController : nil
   }
 }

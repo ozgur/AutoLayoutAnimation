@@ -11,10 +11,10 @@ import Alamofire
 
 class AlamofirePaginationViewController: UIViewController {
   
-  @IBOutlet private weak var pageStepper: UIStepper!
-  @IBOutlet private weak var pageLabel: UILabel!
-  @IBOutlet private weak var responseLabel: UILabel!
-  @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+  @IBOutlet fileprivate weak var pageStepper: UIStepper!
+  @IBOutlet fileprivate weak var pageLabel: UILabel!
+  @IBOutlet fileprivate weak var responseLabel: UILabel!
+  @IBOutlet fileprivate weak var activityIndicatorView: UIActivityIndicatorView!
 
   convenience init() {
     self.init(nibName: "AlamofirePaginationViewController", bundle: nil)
@@ -30,16 +30,16 @@ class AlamofirePaginationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    edgesForExtendedLayout = .None
+    edgesForExtendedLayout = UIRectEdge()
     title = "Alamofire Pagination"
     currentPage = 0
   }
   
-  @IBAction func pageChanged(sender: UIStepper) {
+  @IBAction func pageChanged(_ sender: UIStepper) {
     currentPage = Int(sender.value)
   }
 
-  @IBAction func submitButtonTapped(sender: UIButton) {
+  @IBAction func submitButtonTapped(_ sender: UIButton) {
     responseLabel.text = nil
     activityIndicatorView.startAnimating()
     
@@ -53,7 +53,7 @@ class AlamofirePaginationViewController: UIViewController {
           if let args = result["args"] as? [String: AnyObject] {
             self.responseLabel.text = args.map { key, value -> String in
               return "\(key) -> \(String(value))"
-            }.joinWithSeparator("\n")
+            }.joined(separator: "\n")
           }
         }
     }
@@ -61,8 +61,8 @@ class AlamofirePaginationViewController: UIViewController {
 }
 
 class Paginator: URLRequestConvertible {
-  private static let baseURL: NSURL! = NSURL(string: "http://httpbin.org")
-  private static let perPage = 50
+  fileprivate static let baseURL: URL! = URL(string: "http://httpbin.org")
+  fileprivate static let perPage = 50
   
   let query: String
   let currentPage: Int
@@ -73,7 +73,7 @@ class Paginator: URLRequestConvertible {
   }
 
   var URLRequest: NSMutableURLRequest {
-    let request = NSURLRequest(URL: Paginator.baseURL.URLByAppendingPathComponent("/get"))
+    let request = Foundation.URLRequest(URL: Paginator.baseURL.URLByAppendingPathComponent("/get"))
     let parameters: [String: AnyObject] = [
       "query": query,
       "offset": Paginator.perPage * currentPage,

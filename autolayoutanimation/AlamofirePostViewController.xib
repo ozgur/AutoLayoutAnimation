@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlamofirePostViewController" customModule="AutoLayoutAnimation" customModuleProvider="target">
@@ -20,7 +20,6 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epe-c5-q94">
                     <rect key="frame" x="23" y="41" width="60" height="30"/>
-                    <animations/>
                     <state key="normal" title="UPLOAD"/>
                     <connections>
                         <action selector="uploadButtonTapped:" destination="-1" eventType="touchUpInside" id="CXt-CU-8Gs"/>
@@ -28,7 +27,6 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXL-SF-bRD">
                     <rect key="frame" x="112" y="41" width="68" height="30"/>
-                    <animations/>
                     <state key="normal" title="HEADERS"/>
                     <connections>
                         <action selector="headersButtonTapped:" destination="-1" eventType="touchUpInside" id="FSV-C3-Aa7"/>
@@ -36,7 +34,6 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfQ-RD-lP9">
                     <rect key="frame" x="207" y="41" width="88" height="30"/>
-                    <animations/>
                     <state key="normal" title="BASIC AUTH"/>
                     <connections>
                         <action selector="basicAuthButtonTapped:" destination="-1" eventType="touchUpInside" id="NvB-hS-c8X"/>
@@ -44,22 +41,18 @@
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95u-U9-u8r">
                     <rect key="frame" x="23" y="108" width="272" height="0.0"/>
-                    <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4Av-fb-0hd">
                     <rect key="frame" x="150" y="80" width="20" height="20"/>
-                    <animations/>
                 </activityIndicatorView>
                 <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8d3-lm-uzK">
                     <rect key="frame" x="23" y="89" width="272" height="2"/>
-                    <animations/>
                     <color key="progressTintColor" red="0.041930248429999997" green="0.3754537563" blue="0.01011630094" alpha="1" colorSpace="calibratedRGB"/>
                 </progressView>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="95u-U9-u8r" firstAttribute="leading" secondItem="epe-c5-q94" secondAttribute="leading" id="4uU-8S-qrI"/>

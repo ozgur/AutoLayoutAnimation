@@ -11,39 +11,39 @@ import UIKit
 class FlipInteractiveAnimationController: UIPercentDrivenInteractiveTransition {
 
   var inProgress: Bool = false
-  private var completesTransition: Bool = false
-  private weak var viewController: UIViewController!
+  fileprivate var completesTransition: Bool = false
+  fileprivate weak var viewController: UIViewController!
   
-  func wireToViewController(viewController: UIViewController) {
+  func wireToViewController(_ viewController: UIViewController) {
     self.viewController = viewController
     
     let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handlePan:")
-    gestureRecognizer.edges = .Left
+    gestureRecognizer.edges = .left
     viewController.view.addGestureRecognizer(gestureRecognizer)
   }
   
-  func handlePan(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
-    let translation = gestureRecognizer.translationInView(gestureRecognizer.view!.superview!)
+  func handlePan(_ gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
+    let translation = gestureRecognizer.translation(in: gestureRecognizer.view!.superview!)
     
     let progress = fminf(fmaxf(0, Float(translation.x / 200.0)), 1)
     
     switch gestureRecognizer.state {
-    case .Began:
+    case .began:
       inProgress = true
-      viewController.dismissViewControllerAnimated(true, completion: nil)
-    case .Changed:
+      viewController.dismiss(animated: true, completion: nil)
+    case .changed:
       completesTransition = progress > 0.5
-      self.updateInteractiveTransition(CGFloat(progress))
-    case .Cancelled:
+      self.update(CGFloat(progress))
+    case .cancelled:
       inProgress = false
-      self.cancelInteractiveTransition()
-    case .Ended:
+      self.cancel()
+    case .ended:
       inProgress = false
       if completesTransition {
-        self.finishInteractiveTransition()
+        self.finish()
       }
       else {
-        self.cancelInteractiveTransition()
+        self.cancel()
       }
     default:
       return

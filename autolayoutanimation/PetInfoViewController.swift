@@ -15,8 +15,8 @@ class PetInfoViewController: UIViewController {
   
   var pet: PetCard!
   
-  @IBAction func dismissButtonTapped(sender: UIButton) {
-    self.dismissViewControllerAnimated(true, completion: nil)
+  @IBAction func dismissButtonTapped(_ sender: UIButton) {
+    self.dismiss(animated: true, completion: nil)
   }
   override func viewDidLoad() {
     super.viewDidLoad()

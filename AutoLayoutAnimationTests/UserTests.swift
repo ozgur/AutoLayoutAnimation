@@ -81,7 +81,7 @@ class UserDataManagerSpec: QuickSpec {
       it("will test success") {
         self.dataManager.requestUsers("Users") { response in
           switch response {
-          case .Success:
+          case .success:
             self.userDataHTTPResponse = response
           default:
             self.userDataHTTPResponse = nil
@@ -94,7 +94,7 @@ class UserDataManagerSpec: QuickSpec {
         
         self.dataManager.requestUsers("XXX") { response in
           switch response {
-          case .Error:
+          case .error:
             self.userDataHTTPResponse = response
           default:
             self.userDataHTTPResponse = nil

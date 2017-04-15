@@ -12,8 +12,8 @@ import Ono
 
 class AlamofireXMLViewController: UIViewController {
   
-  @IBOutlet private weak var responseLabel: UILabel!
-  @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+  @IBOutlet fileprivate weak var responseLabel: UILabel!
+  @IBOutlet fileprivate weak var activityIndicatorView: UIActivityIndicatorView!
 
   convenience init() {
     self.init(nibName: "AlamofireXMLViewController", bundle: nil)
@@ -21,16 +21,16 @@ class AlamofireXMLViewController: UIViewController {
   
   override func loadView() {
     super.loadView()
-    view.backgroundColor = UIColor.whiteColor()
+    view.backgroundColor = UIColor.white
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Alamofire XML"
-    edgesForExtendedLayout = .None
+    edgesForExtendedLayout = UIRectEdge()
   }
   
-  override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     responseLabel.text = nil
@@ -51,29 +51,29 @@ class AlamofireXMLViewController: UIViewController {
 }
 
 extension Request {
-  private class func XMLResponseSerializer() -> ResponseSerializer<ONOXMLDocument, NSError> {
+  fileprivate class func XMLResponseSerializer() -> ResponseSerializer<ONOXMLDocument, NSError> {
 
     return ResponseSerializer(serializeResponse: { (request, response, data, error) -> Result<ONOXMLDocument, NSError> in
       guard error == nil else {
-        return Result.Failure(error!)
+        return Result.failure(error!)
       }
       guard data != nil else {
-        let failure = Error.errorWithCode(
-          .DataSerializationFailed,
+        let failure = Alamofire.Error.errorWithCode(
+          .dataSerializationFailed,
           failureReason: "Data could not be serialized. Input data was nil."
         )
-        return Result.Failure(failure)
+        return Result.failure(failure)
       }
       do {
         let xmlDocument = try ONOXMLDocument(data: data!)
-        return Result.Success(xmlDocument)
+        return Result.success(xmlDocument)
       } catch {
-        return Result.Failure(error as NSError)
+        return Result.failure(error as NSError)
       }
     })
   }
   
-  func responseXMLDocument(completionHandler: Response<ONOXMLDocument, NSError> -> Void) -> Self {
+  func responseXMLDocument(_ completionHandler: (Response<ONOXMLDocument, NSError>) -> Void) -> Self {
     return response(responseSerializer: Request.XMLResponseSerializer(), completionHandler: completionHandler)
   }
 }

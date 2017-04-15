@@ -15,26 +15,26 @@ class AlamofireViewController: UIViewController {
     self.init(nibName: "AlamofireViewController", bundle: nil)
   }
 
-  @IBOutlet private weak var responseLabel: UILabel!
-  @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+  @IBOutlet fileprivate weak var responseLabel: UILabel!
+  @IBOutlet fileprivate weak var activityIndicatorView: UIActivityIndicatorView!
   
-  private func url(url: String) -> String {
+  fileprivate func url(_ url: String) -> String {
     return "http://httpbin.org" + url
   }
 
   override func loadView() {
     super.loadView()
-    view.backgroundColor = UIColor.whiteColor()
+    view.backgroundColor = UIColor.white
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.edgesForExtendedLayout = .None
+    self.edgesForExtendedLayout = UIRectEdge()
 
     title = "Alamofire GET"
   }
   
-  @IBAction func IPButtonTapped(sender: UIButton) {
+  @IBAction func IPButtonTapped(_ sender: UIButton) {
     responseLabel.text = nil
     activityIndicatorView.startAnimating()
     
@@ -52,9 +52,9 @@ class AlamofireViewController: UIViewController {
         self.activityIndicatorView.stopAnimating()
         
         switch response.result {
-        case .Success(let value):
+        case .success(let value):
           print(value)
-        case .Failure(let error):
+        case .failure(let error):
           print(error.localizedDescription)
         }
         let result = response.result.value as! [String: String]
@@ -62,7 +62,7 @@ class AlamofireViewController: UIViewController {
     }
   }
   
-  @IBAction func userAgentButtonTapped(sender: UIButton) {
+  @IBAction func userAgentButtonTapped(_ sender: UIButton) {
     responseLabel.text = nil
     activityIndicatorView.startAnimating()
 
@@ -80,7 +80,7 @@ class AlamofireViewController: UIViewController {
     }
   }
   
-  @IBAction func cookiesButtonTapped(sender: UIButton) {
+  @IBAction func cookiesButtonTapped(_ sender: UIButton) {
     responseLabel.text = nil
     activityIndicatorView.startAnimating()
     
@@ -92,7 +92,7 @@ class AlamofireViewController: UIViewController {
         let cookies = result["cookies"]!.map({ (k, v) -> String in
           return "\(k) -> \(v)"
         })
-        self.responseLabel.text = cookies.joinWithSeparator("\n")
+        self.responseLabel.text = cookies.joined(separator: "\n")
     }
   }
   
